@@ -16,37 +16,36 @@ def find_N(Quorum_system):
     return max(new_C_list) + 1
 
 
-def create_one_rotation_quorum_system(Quorum_system, r, N):
+def create_one_rotation_quorum_system(Quorum_system, r):
     temp_list = copy.deepcopy(Quorum_system)
     for i in range(len(Quorum_system)):
         for j in range(len(Quorum_system[i])):
-            temp_list[i][j] = (Quorum_system[i][j] + r) % N
+            temp_list[i][j] = (Quorum_system[i][j] + r) % find_N(Quorum_system)
 
     return temp_list
 
 
-def create_all_rotation(Quorum_system, N):
+def create_all_rotation(Quorum_system):
     C_total = list()
-    for r in range(1, N):
-        C_total.append(create_one_rotation_quorum_system(Quorum_system, r, N))
+    for r in range(1, find_N(Quorum_system)):
+        C_total.append(create_one_rotation_quorum_system(Quorum_system, r))
     return C_total
 
 
-def is_rotation_closure(Quorum_system, all_rotation_Quorum_system, N):
+def is_rotation_closure(Quorum_system):
     count = 0
-    for Quorum_system in all_rotation_Quorum_system:
+    for Quorum_system in create_all_rotation(Quorum_system):
         for Q in Quorum_system:
             for i in range(len(Quorum_system)):
                 if is_two_quorum_intersection(Quorum_system[i], Q):
                     count += 1
-    if count == (N-1) * len(Quorum_system) * len(Quorum_system):
+    if count == (find_N(Quorum_system)-1) * len(Quorum_system) * len(Quorum_system):
         return True
     else:
         return False
 
 
 C = [[0, 1, 2, 4], [3, 4, 5, 7], [0, 2, 6, 7]]
-print(is_rotation_closure(C, create_all_rotation(C, find_N(C)), find_N(C)))
+print(is_rotation_closure(C))
 
-## - one 參數
 
