@@ -1,13 +1,6 @@
 import copy
 
 
-# def find_N(Quorum_system):
-#     new_C_list = list()
-#     for Q in Quorum_system:
-#         for num in Q:
-#             new_C_list.append(num)
-#     return max(new_C_list) + 1
-
 def is_two_quorum_intersection(quorum1, quorum2):
     for num in quorum1:
         if num in quorum2:
@@ -32,7 +25,7 @@ def create_all_rotation(Quorum_system, N):
 
 
 def flatten(q_s_all):
-    q_s_all_f = list()
+    q_s_all_f = list()  # quorum_system_all_flatten
     for q_s in q_s_all:
         for q in q_s:
             q_s_all_f.append(q)
@@ -50,12 +43,13 @@ def is_rotation_closure(Quorum_system, N):
     return count == (N * len(Quorum_system)) ** 2
 
 
-C1 = [[0, 1, 2, 4], [3, 4, 5, 7], [0, 2, 6, 7]]
-C2 = [[0, 1], [0, 2], [1, 2]]
-C_grid = [[1, 4, 5, 6, 7, 9, 13], [14, 15, 3, 7, 11, 12, 13]]
+if __name__ == '__main__':
+    C1 = [[0, 1, 2, 4], [3, 4, 5, 7], [0, 2, 6, 7]]
+    C2 = [[0, 1], [0, 2], [1, 2]]
+    C_grid = [[1, 4, 5, 6, 7, 9, 13], [14, 15, 3, 7, 11, 12, 13]]
 
-# print(create_all_rotation(C2, 4))
-print(is_rotation_closure(C2, 4))
-# print(create_all_rotation(C1, 8))
-print(is_rotation_closure(C1, 8))
-print(is_rotation_closure(C_grid, 15))
+    # print(create_all_rotation(C2, 4))
+    print(is_rotation_closure(C2, 4))
+    # print(create_all_rotation(C1, 8))
+    print(is_rotation_closure(C1, 8))
+    print(is_rotation_closure(C_grid, 15))
