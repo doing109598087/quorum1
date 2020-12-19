@@ -57,6 +57,7 @@ def is_rotation_m_closure_property(quorum_system, N):
     if count == pow(N, len_of_quorum):
         print(count)
         return True
+    return False
 
 
 N = 9
