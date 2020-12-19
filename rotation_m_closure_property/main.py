@@ -37,7 +37,7 @@ def create_all_product_of_all_rotation_of_all_quorom(C1, N):
     all_product_of_all_rotation_of_all_quorom_list = list()
     for com in comb:
         temp_list = list()
-        for i in range(3):
+        for i in range(len_of_quorum):
             temp_list.append(all_rotation_of_all_quorom[i][com[i]])
         all_product_of_all_rotation_of_all_quorom_list.append(temp_list)
     return all_product_of_all_rotation_of_all_quorom_list
@@ -60,6 +60,6 @@ def is_rotation_m_closure_property(C1, N):
 N = 9
 # C1 = [[0, 5, 10, 15, 20, 25], [0, 3, 6, 10, 9, 12, 15, 18, 21, 24, 27],
 #       [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28]]
-C2 = [[0, 1, 2, 4, 5, 7, 8], [0, 2, 3, 5, 6, 7, 8], [0, 1, 2, 3, 4, 5, 6]]
+C2 = [[0, 1, 2, 4, 5, 7, 8], [0, 2, 3, 5, 6, 7, 8]]
 
 print(is_rotation_m_closure_property(C2, N))
