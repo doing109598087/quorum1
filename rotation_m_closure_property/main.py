@@ -30,8 +30,9 @@ def create_all_quorom_rotation(quorum_system, N):
     return all_rotation_of_all_quorom
 
 
-def create_all_product_of_all_rotation_of_all_quorom(all_rotation_of_all_quorom, N, len_of_quorum):
+def create_all_product_of_all_rotation_of_all_quorom(C1, N, len_of_quorum):
     comb = list(product([n for n in range(N)], repeat=len_of_quorum))
+    all_rotation_of_all_quorom = create_all_quorom_rotation(C1, N)
     all_product_of_all_rotation_of_all_quorom_list = list()
     for com in comb:
         temp_list = list()
@@ -41,8 +42,8 @@ def create_all_product_of_all_rotation_of_all_quorom(all_rotation_of_all_quorom,
     return all_product_of_all_rotation_of_all_quorom_list
 
 
-def is_rotation_m_closure_property(list1, N, len_of_quorum):
-    all_product_of_all_rotation_of_all_quorom_list = create_all_product_of_all_rotation_of_all_quorom(list1, N,
+def is_rotation_m_closure_property(C1, N, len_of_quorum):
+    all_product_of_all_rotation_of_all_quorom_list = create_all_product_of_all_rotation_of_all_quorom(C1, N,
                                                                                                       len_of_quorum)
     count = 0
     for i in range(pow(N, len_of_quorum)):
@@ -59,12 +60,5 @@ N = 30
 C1 = [[0, 5, 10, 15, 20, 25], [0, 3, 6, 10, 9, 12, 15, 18, 21, 24, 27],
       [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28]]
 
-list1 = create_all_quorom_rotation(C1, N)
+is_rotation_m_closure_property(C1, N, 3)
 
-all_product_of_all_rotation_of_all_quorom_list = create_all_product_of_all_rotation_of_all_quorom(list1, N, 3)
-
-is_rotation_m_closure_property(list1, N, 3)
-
-# for i in range(5000):
-#     print(all_product_of_all_rotation_of_all_quorom_list[i], end='')
-#     print(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i]))
