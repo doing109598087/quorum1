@@ -1,5 +1,5 @@
 import numpy as np
-from rotation_closure_property import is_rotation_closure
+from rotation_closure_property.is_rotation_closure_property import is_rotation_closure
 
 
 # 改N可以改grid方陣

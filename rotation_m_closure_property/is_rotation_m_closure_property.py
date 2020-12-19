@@ -1,8 +1,10 @@
-import copy
 from itertools import product
 
 
 # overlap refactor: https://www.coderbridge.com/@kuanghsuan/2b75b952ea6f402ba11a0de654077b91
+from typing import List, Any, Union
+
+
 def overlap(quorum1, quorum2):
     return list(set(quorum1).intersection(quorum2))
 
@@ -16,7 +18,7 @@ def overlap_of_lists(quorums):
 
 
 def create_one_quorom_rotation(quorum, N):
-    all_rotation_of_one_quorom = list()
+    all_rotation_of_one_quorom: List[List[Union[int, Any]]] = list()
     for i in range(N):
         all_rotation_of_one_quorom.append([(n + i) % N for n in quorum])
     return all_rotation_of_one_quorom
@@ -60,6 +62,6 @@ def is_rotation_m_closure_property(quorum_system, N):
 N = 9
 # C1 = [[0, 5, 10, 15, 20, 25], [0, 3, 6, 10, 9, 12, 15, 18, 21, 24, 27],
 #       [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28]]
-C2 = [[0, 1, 2, 4, 5, 7, 8], [0, 2, 3, 5, 6, 7, 8]]
+C2 = [[0, 1, 2, 4, 5, 7, 8], [0, 2, 3, 5, 6, 7, 8], [0, 1, 2, 3, 4, 5, 6]]
 
 print(is_rotation_m_closure_property(C2, N))
