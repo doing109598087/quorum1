@@ -41,15 +41,30 @@ def create_all_product_of_all_rotation_of_all_quorom(all_rotation_of_all_quorom,
     return all_product_of_all_rotation_of_all_quorom_list
 
 
+def is_rotation_m_closure_property(list1, N, len_of_quorum):
+    all_product_of_all_rotation_of_all_quorom_list = create_all_product_of_all_rotation_of_all_quorom(list1, N,
+                                                                                                      len_of_quorum)
+    count = 0
+    for i in range(pow(N, len_of_quorum)):
+        print(all_product_of_all_rotation_of_all_quorom_list[i], end='')
+        print(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i]))
+        if len(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i])) != 0:
+            count += 1
+    if count == pow(N, len_of_quorum):
+        print(count)
+        return True
+
+
 N = 30
 C1 = [[0, 5, 10, 15, 20, 25], [0, 3, 6, 10, 9, 12, 15, 18, 21, 24, 27],
       [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28]]
 
-list1 = create_all_quorom_rotation(C1, 30)
+list1 = create_all_quorom_rotation(C1, N)
 
-all_product_of_all_rotation_of_all_quorom_list = create_all_product_of_all_rotation_of_all_quorom(list1, 30, 3)
+all_product_of_all_rotation_of_all_quorom_list = create_all_product_of_all_rotation_of_all_quorom(list1, N, 3)
 
-for i in range(5000):
-    print(all_product_of_all_rotation_of_all_quorom_list[i], end='')
-    print(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i]))
+is_rotation_m_closure_property(list1, N, 3)
 
+# for i in range(5000):
+#     print(all_product_of_all_rotation_of_all_quorom_list[i], end='')
+#     print(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i]))
