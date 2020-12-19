@@ -1,7 +1,7 @@
 import numpy as np
-import is_rotation_closure_property
+import rotation_closure_property
 from random import choice
-from is_rotation_closure_property import is_rotation_closure
+from rotation_closure_property import is_rotation_closure
 
 
 # create torus 矩陣
