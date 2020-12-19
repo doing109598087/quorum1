@@ -3,14 +3,14 @@ from itertools import product
 
 
 # overlap refactor: https://www.coderbridge.com/@kuanghsuan/2b75b952ea6f402ba11a0de654077b91
-def overlap(list1, list2):
-    return list(set(list1).intersection(list2))
+def overlap(quorum1, quorum2):
+    return list(set(quorum1).intersection(quorum2))
 
 
-def overlap_of_lists(lists):
-    intersection_list = overlap(lists[0], lists[1])
-    for i in range(len(lists)):
-        intersection_list = overlap(intersection_list, lists[i])
+def overlap_of_lists(quorums):
+    intersection_list = overlap(quorums[0], quorums[1])
+    for i in range(len(quorums)):
+        intersection_list = overlap(intersection_list, quorums[i])
 
     return intersection_list
 
@@ -30,10 +30,10 @@ def create_all_quorom_rotation(quorum_system, N):
     return all_rotation_of_all_quorom
 
 
-def create_all_product_of_all_rotation_of_all_quorom(C1, N):
-    len_of_quorum = len(C1)
+def create_all_product_of_all_rotation_of_all_quorom(quorum_system, N):
+    len_of_quorum = len(quorum_system)
     comb = list(product([n for n in range(N)], repeat=len_of_quorum))
-    all_rotation_of_all_quorom = create_all_quorom_rotation(C1, N)
+    all_rotation_of_all_quorom = create_all_quorom_rotation(quorum_system, N)
     all_product_of_all_rotation_of_all_quorom_list = list()
     for com in comb:
         temp_list = list()
@@ -43,10 +43,10 @@ def create_all_product_of_all_rotation_of_all_quorom(C1, N):
     return all_product_of_all_rotation_of_all_quorom_list
 
 
-def is_rotation_m_closure_property(C1, N):
-    all_product_of_all_rotation_of_all_quorom_list = create_all_product_of_all_rotation_of_all_quorom(C1, N)
+def is_rotation_m_closure_property(quorum_system, N):
+    all_product_of_all_rotation_of_all_quorom_list = create_all_product_of_all_rotation_of_all_quorom(quorum_system, N)
     count = 0
-    len_of_quorum = len(C1)
+    len_of_quorum = len(quorum_system)
     for i in range(pow(N, len_of_quorum)):
         print(all_product_of_all_rotation_of_all_quorom_list[i], end='')
         print(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i]))
