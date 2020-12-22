@@ -5,7 +5,7 @@ from typing import List, Any, Union
 
 
 def overlap(quorum1, quorum2):
-    return list(set(quorum1).intersection(quorum2))
+    return set(quorum1).intersection(quorum2)
 
 
 def overlap_of_lists(quorums):
@@ -37,20 +37,20 @@ def is_rotation_m_closure_property(quorum_system, N):
     count = 0
     len_of_quorum = len(quorum_system)
     for i in range(pow(N, len_of_quorum)):
-        print(all_product_of_all_rotation_of_all_quorom_list[i], end='')  # print花時間
-        print(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i]))
+        # print(all_product_of_all_rotation_of_all_quorom_list[i], end='')  # print花時間
+        # print(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i]))
         if len(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i])):
             count += 1
+    print(count)
     if count == pow(N, len_of_quorum):
-        print(count)
+
         return True
     return False
 
 
 if __name__ == '__main__':
     N = 9
-    # C1 = [[0, 5, 10, 15, 20, 25], [0, 3, 6, 10, 9, 12, 15, 18, 21, 24, 27],
-    #       [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28]]
+
     C2 = [[0, 1, 2, 4, 5, 7, 8], [0, 2, 3, 5, 6, 7, 8], [0, 1, 2, 3, 4, 5, 6]]
 
     # N = 30

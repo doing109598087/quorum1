@@ -14,9 +14,30 @@ def create_all_crt_quorum(pm_list, N):
     return [create_one_crt_quorum(p, N) for p in pm_list]
 
 
-p1 = 3
-p2 = 5
-p3 = 7
+def is_coprime(num1, num2):
+    while num2 != 0:
+        temp = num2
+        num2 = num1 % num2
+        num1 = temp
+    if num1 == 1:
+        return True
+    else:
+        return False
+
+
+def is_prime(num):
+    if num == 1:
+        return False
+    for i in range(2, num):
+        if num % i == 0:
+            return False
+    return True
+
+
+p1 = 4
+p2 = 9
+p3 = 5
+# p4 = 7
 N = p1 * p2 * p3
 pm_list = [p1, p2, p3]
 
