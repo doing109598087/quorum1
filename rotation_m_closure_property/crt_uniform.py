@@ -1,7 +1,6 @@
 import time
 from rotation_m_closure_property.is_rotation_m_closure_property import is_rotation_m_closure_property
-import numpy as np
-
+import random
 
 def create_one_crt_quorum(p, N):
     p_list = list()
@@ -34,10 +33,24 @@ def is_prime(num):
             return False
     return True
 
+def add_number_to_one_quorum(list1, N, tatol_time):
+    while len(list1) != tatol_time:
+        a = random.randint(0, N)
+        if a not in list1:
+            list1.append(a)
+    list1.sort()
+    return list1
 
-p1 = 9
-p2 = 4
-p3 = 5
+def add_number_to_all_quorum(quorum_system, N, final_k):
+    crt_uniform_quorum_system = list()
+    for i in range(len(crt_quorum_system)):
+        crt_uniform_quorum_system.append(add_number_to_one_quorum(crt_quorum_system[i], N, final_k))
+    return crt_uniform_quorum_system
+
+
+p1 = 5
+p2 = 3
+p3 = 2
 # 4, 5, 9 ok
 # 2, 3, 5 ok
 # 3, 4, 5 ok
@@ -48,9 +61,14 @@ pm_list = [p1, p2, p3]
 
 start_time = time.time()
 
-crt_qrorum_system = create_all_crt_quorum(pm_list, N)
-print(crt_qrorum_system)
-print(is_rotation_m_closure_property(crt_qrorum_system, N))
+crt_quorum_system = create_all_crt_quorum(pm_list, N)
+print(crt_quorum_system)
+
+# add uniform_k_arbiter
+for i in range(15, 22):
+    print(i, ":")
+    crt_uniform_quorum_system = add_number_to_all_quorum(crt_quorum_system, N, i)
+    print(is_rotation_m_closure_property(crt_uniform_quorum_system, N))
 
 end_time = time.time()
 

@@ -12,6 +12,7 @@ def overlap_of_lists(quorums):
     intersection_list = overlap(quorums[0], quorums[1])
     for i in range(len(quorums)):
         intersection_list = overlap(intersection_list, quorums[i])
+    # print('intersection_list_num', len(intersection_list))
     return intersection_list
 
 
@@ -36,12 +37,16 @@ def is_rotation_m_closure_property(quorum_system, N):
     all_product_of_all_rotation_of_all_quorom_list = create_all_product_of_all_rotation_of_all_quorom(quorum_system, N)
     count = 0
     len_of_quorum = len(quorum_system)
+    total_overlap_count = 0
     for i in range(pow(N, len_of_quorum)):
-        # print(all_product_of_all_rotation_of_all_quorom_list[i], end='')  # print花時間
+        # print(all_product_of_all_rotation_of_all_quorom_list[i], end='')
         # print(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i]))
+        # print(len(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i])))
+        total_overlap_count += len(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i]))
         if len(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i])):
             count += 1
     print(count)
+    print(total_overlap_count)
     if count == pow(N, len_of_quorum):
 
         return True
