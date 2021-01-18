@@ -1,4 +1,5 @@
 from itertools import product, combinations
+import numpy as np
 
 
 def is_two_quorum_intersection(quorum1, quorum2):
@@ -64,9 +65,19 @@ def is_rotation_closure(quorum_system, N):
 
 
 if __name__ == '__main__':
-    N = 8
-    C1 = [[0, 1, 2, 4], [3, 4, 5, 7], [0, 2, 6, 7]]
+    import time
+    # start_time = time.time()
+    # end_time = time.time()
+    # print("--- %s seconds ---" % (end_time - start_time))
 
-    # N = 16
-    # C_grid = [[1, 4, 5, 6, 7, 9, 13], [14, 15, 3, 7, 11, 12, 13]]
-    print(is_rotation_closure(C1, N))
+
+
+    # N = 8
+    # C1 = [[0, 1, 2, 4], [3, 4, 5, 7], [0, 2, 6, 7]]
+    # print(is_rotation_closure(C1, N))
+    start_time = time.time()
+    N = 16
+    C_grid = [[1, 4, 5, 6, 7, 9, 13], [14, 15, 3, 7, 11, 12, 13]]
+    print(is_rotation_closure(C_grid, N))
+    end_time = time.time()
+    print("--- %s seconds ---" % (end_time - start_time))
