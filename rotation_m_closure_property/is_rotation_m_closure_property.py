@@ -47,15 +47,15 @@ def is_rotation_m_closure_property(quorum_system, N):
             count += 1
     print(count)
     print(total_overlap_count)
+    average_overlap = total_overlap_count / count
     if count == pow(N, len_of_quorum):
 
-        return True
-    return False
+        return True, average_overlap
+    return False, average_overlap
 
 
 if __name__ == '__main__':
     N = 9
-
     C2 = [[0, 1, 2, 4, 5, 7, 8], [0, 2, 3, 5, 6, 7, 8], [0, 1, 2, 3, 4, 5, 6]]
 
     # N = 30

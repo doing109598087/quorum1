@@ -49,8 +49,8 @@ def add_number_to_all_quorum(quorum_system, N, final_k):
 
 
 p1 = 5
-p2 = 3
-p3 = 2
+p2 = 4
+p3 = 3
 # 4, 5, 9 ok
 # 2, 3, 5 ok
 # 3, 4, 5 ok
@@ -65,7 +65,7 @@ crt_quorum_system = create_all_crt_quorum(pm_list, N)
 print(crt_quorum_system)
 
 # add uniform_k_arbiter
-for i in range(15, 22):
+for i in range(21, 62):
     print(i, ":")
     crt_uniform_quorum_system = add_number_to_all_quorum(crt_quorum_system, N, i)
     print(is_rotation_m_closure_property(crt_uniform_quorum_system, N))

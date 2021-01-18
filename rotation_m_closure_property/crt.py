@@ -35,9 +35,9 @@ def is_prime(num):
     return True
 
 
-p1 = 9
+p1 = 5
 p2 = 4
-p3 = 5
+p3 = 3
 # 4, 5, 9 ok
 # 2, 3, 5 ok
 # 3, 4, 5 ok
@@ -50,7 +50,8 @@ start_time = time.time()
 
 crt_qrorum_system = create_all_crt_quorum(pm_list, N)
 print(crt_qrorum_system)
-print(is_rotation_m_closure_property(crt_qrorum_system, N))
+is_rotation_m, average_overlap = is_rotation_m_closure_property(crt_qrorum_system, N)
+print(is_rotation_m, ', average_overlap: ', average_overlap)
 
 end_time = time.time()
 
