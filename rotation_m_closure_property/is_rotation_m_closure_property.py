@@ -16,18 +16,18 @@ def overlap_of_lists(quorums):
     return intersection_list
 
 
-def create_one_quorom_rotation(quorum, N):
+def create_one_quorum_rotation(quorum, N):
     return [[(n + i) % N for n in quorum] for i in range(N)]
 
 
-def create_all_quorom_rotation(quorum_system, N):
-    return [create_one_quorom_rotation(quorum_system[i], N) for i in range(len(quorum_system))]
+def create_all_quorum_rotation(quorum_system, N):
+    return [create_one_quorum_rotation(quorum_system[i], N) for i in range(len(quorum_system))]
 
 
 def create_all_product_of_all_rotation_of_all_quorom(quorum_system, N):
     len_of_quorum = len(quorum_system)
     comb = list(product([n for n in range(N)], repeat=len_of_quorum))
-    all_rotation_of_all_quorom = create_all_quorom_rotation(quorum_system, N)
+    all_rotation_of_all_quorom = create_all_quorum_rotation(quorum_system, N)
     all_product_of_all_rotation_of_all_quorom_list = [
         [all_rotation_of_all_quorom[i][com[i]] for i in range(len_of_quorum)] for com in comb]
     return all_product_of_all_rotation_of_all_quorom_list
@@ -45,8 +45,8 @@ def is_rotation_m_closure_property(quorum_system, N):
         total_overlap_count += len(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i]))
         if len(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i])):
             count += 1
-    print(count)
-    print(total_overlap_count)
+    print('total 組合::', count)
+    print('total_overlap: ', total_overlap_count)
     average_overlap = total_overlap_count / count
     if count == pow(N, len_of_quorum):
 
