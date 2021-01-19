@@ -42,7 +42,7 @@ def add_number_to_one_quorum(quorum, N, total_time):
     if len(quorum) >= total_time:
         return quorum
     while len(q2) < total_time:
-        a = random.randint(0, N)
+        a = random.randint(0, N-1)
         if a not in q2:
             q2.append(a)
     q2.sort()
