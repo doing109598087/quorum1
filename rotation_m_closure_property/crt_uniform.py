@@ -2,6 +2,7 @@ import time
 from rotation_m_closure_property.is_rotation_m_closure_property import is_rotation_m_closure_property
 import random
 import matplotlib.pyplot as plt
+import copy
 
 
 def create_one_crt_quorum(p, N):
@@ -37,20 +38,32 @@ def is_prime(num):
 
 
 def add_number_to_one_quorum(quorum, N, total_time):
-    if len(quorum) > total_time:
+    q2 = copy.deepcopy(quorum)
+    if len(quorum) >= total_time:
         return quorum
-    while len(quorum) < total_time:
+    while len(q2) < total_time:
         a = random.randint(0, N)
-        if a not in quorum:
-            quorum.append(a)
-    quorum.sort()
-    return quorum
+        if a not in q2:
+            q2.append(a)
+    q2.sort()
+    return q2
+
+# 下面的版本可使每次從上一輪的況狀再加入隨機數
+# def add_number_to_one_quorum(quorum, N, total_time):
+#     if len(quorum) >= total_time:
+#         return quorum
+#     while len(quorum) < total_time:
+#         a = random.randint(0, N)
+#         if a not in quorum:
+#             quorum.append(a)
+#     quorum.sort()
+#     return quorum
 
 
 def add_number_to_all_quorum(quorum_system, N, final_k):
     crt_uniform_quorum_system = list()
-    for i in range(len(quorum_system)):
-        crt_uniform_quorum_system.append(add_number_to_one_quorum(quorum_system[i], N, final_k))
+    for quorum in quorum_system:
+        crt_uniform_quorum_system.append(add_number_to_one_quorum(quorum, N, final_k))
     return crt_uniform_quorum_system
 
 
@@ -72,6 +85,7 @@ print(crt_quorum_system)
 
 # add uniform_k_arbiter
 average_overlap_list = list()
+re_crt_quorum_system = copy.deepcopy(crt_quorum_system)
 for i in range(32):
     print(i, ":")
     crt_uniform_quorum_system = add_number_to_all_quorum(crt_quorum_system, N, i)
@@ -79,6 +93,8 @@ for i in range(32):
     is_rotation_m, average_overlap = is_rotation_m_closure_property(crt_uniform_quorum_system, N)
     print(is_rotation_m, ', average_overlap:', average_overlap)
     average_overlap_list.append(average_overlap)
+    # crt_uniform_quorum_system = re_crt_quorum_system
+    # print("r", crt_uniform_quorum_system)
 
 # draw
 print(average_overlap_list)
