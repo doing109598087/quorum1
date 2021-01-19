@@ -3,6 +3,7 @@ from rotation_m_closure_property.is_rotation_m_closure_property import is_rotati
 import random
 import matplotlib.pyplot as plt
 import copy
+import pandas as pd
 
 
 def create_one_crt_quorum(p, N):
@@ -37,11 +38,13 @@ def is_prime(num):
     return True
 
 
-def add_number_to_one_quorum(quorum, N, total_time):
+def add_number_to_one_quorum(quorum, N, num):
     q2 = copy.deepcopy(quorum)
-    if len(quorum) >= total_time:
+    # 如果此quorum原本就比num大->直接return(不加隨機數)
+    if len(quorum) >= num:
         return quorum
-    while len(q2) < total_time:
+    # 如果此quorum比num小->加隨機數
+    while len(q2) < num:
         a = random.randint(0, N-1)
         if a not in q2:
             q2.append(a)
@@ -85,24 +88,27 @@ print(crt_quorum_system)
 
 # add uniform_k_arbiter
 average_overlap_list = list()
-re_crt_quorum_system = copy.deepcopy(crt_quorum_system)
-for i in range(32):
+for i in range(N+1):
     print(i, ":")
     crt_uniform_quorum_system = add_number_to_all_quorum(crt_quorum_system, N, i)
     print(crt_uniform_quorum_system)
     is_rotation_m, average_overlap = is_rotation_m_closure_property(crt_uniform_quorum_system, N)
     print(is_rotation_m, ', average_overlap:', average_overlap)
     average_overlap_list.append(average_overlap)
-    # crt_uniform_quorum_system = re_crt_quorum_system
-    # print("r", crt_uniform_quorum_system)
+    print('percentage overlap: ', average_overlap/N)
+
 
 # draw
 print(average_overlap_list)
-plt.plot([x for x in range(32)], average_overlap_list)
+plt.plot([x for x in range(N+1)], average_overlap_list)
 plt.xlabel('each quorum number')
 plt.ylabel('average_overlap')
 plt.show()
 
-end_time = time.time()
+# 表格
+df = pd.DataFrame(average_overlap_list, [x for x in range(N+1)])
+print(df)
 
+
+end_time = time.time()
 print("--- %s seconds ---" % (end_time - start_time))
