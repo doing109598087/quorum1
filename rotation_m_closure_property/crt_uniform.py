@@ -3,6 +3,7 @@ from rotation_m_closure_property.is_rotation_m_closure_property import is_rotati
 import random
 import matplotlib.pyplot as plt
 
+
 def create_one_crt_quorum(p, N):
     p_list = list()
     for i in range(N):
@@ -34,18 +35,22 @@ def is_prime(num):
             return False
     return True
 
-def add_number_to_one_quorum(list1, N, tatol_time):
-    while len(list1) != tatol_time:
+
+def add_number_to_one_quorum(quorum, N, total_time):
+    if len(quorum) > total_time:
+        return quorum
+    while len(quorum) < total_time:
         a = random.randint(0, N)
-        if a not in list1:
-            list1.append(a)
-    list1.sort()
-    return list1
+        if a not in quorum:
+            quorum.append(a)
+    quorum.sort()
+    return quorum
+
 
 def add_number_to_all_quorum(quorum_system, N, final_k):
     crt_uniform_quorum_system = list()
-    for i in range(len(crt_quorum_system)):
-        crt_uniform_quorum_system.append(add_number_to_one_quorum(crt_quorum_system[i], N, final_k))
+    for i in range(len(quorum_system)):
+        crt_uniform_quorum_system.append(add_number_to_one_quorum(quorum_system[i], N, final_k))
     return crt_uniform_quorum_system
 
 
@@ -67,7 +72,7 @@ print(crt_quorum_system)
 
 # add uniform_k_arbiter
 average_overlap_list = list()
-for i in range(15, 32):
+for i in range(32):
     print(i, ":")
     crt_uniform_quorum_system = add_number_to_all_quorum(crt_quorum_system, N, i)
     print(crt_uniform_quorum_system)
@@ -77,7 +82,7 @@ for i in range(15, 32):
 
 # draw
 print(average_overlap_list)
-plt.plot([x for x in range(15, 32)], average_overlap_list)
+plt.plot([x for x in range(32)], average_overlap_list)
 plt.xlabel('each quorum number')
 plt.ylabel('average_overlap')
 plt.show()
