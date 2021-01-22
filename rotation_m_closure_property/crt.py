@@ -37,7 +37,7 @@ def is_prime(num):
 
 p1 = 5
 p2 = 4
-p3 = 9
+p3 = 3
 # 4, 5, 9 ok
 # 2, 3, 5 ok
 # 3, 4, 5 ok
