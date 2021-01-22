@@ -47,22 +47,26 @@ def is_rotation_continuous_m_closure_property(quorum_system, N):
     count = 0
     len_of_quorum = len(quorum_system)
     total_overlap_count = 0
+    over_lap_list = list()
     for i in range(pow(N, len_of_quorum)):
-        print(all_product_of_all_rotation_of_all_quorom_list[i], end='')
-        print(get_all_quorum_continuous_overlap(all_product_of_all_rotation_of_all_quorom_list[i]))
-        print(len(get_all_quorum_continuous_overlap(all_product_of_all_rotation_of_all_quorom_list[i])))
+        # print(all_product_of_all_rotation_of_all_quorom_list[i], end='')
+        # print(get_all_quorum_continuous_overlap(all_product_of_all_rotation_of_all_quorom_list[i]))
+        # print(len(get_all_quorum_continuous_overlap(all_product_of_all_rotation_of_all_quorom_list[i])))
+        over_lap_list.append(len(get_all_quorum_continuous_overlap(all_product_of_all_rotation_of_all_quorom_list[i])))
         total_overlap_count += len(get_all_quorum_continuous_overlap(all_product_of_all_rotation_of_all_quorom_list[i]))
         if len(get_all_quorum_continuous_overlap(all_product_of_all_rotation_of_all_quorom_list[i])) != 0:
             count += 1
     print('total 組合:', count)
     print('total_overlap: ', total_overlap_count)
+    print('min_overlap_count: ', min(over_lap_list))
     average_overlap = total_overlap_count / count
     if count == pow(N, len_of_quorum):
         return True, average_overlap
     return False, average_overlap
 
 
-N = 20
-C = [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
-     [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]]
-print(is_rotation_continuous_m_closure_property(C, N))
+if __name__ == '__main__':
+    N = 20
+    C = [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+         [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]]
+    print(is_rotation_continuous_m_closure_property(C, N))
