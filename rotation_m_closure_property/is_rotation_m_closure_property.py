@@ -39,13 +39,13 @@ def is_rotation_m_closure_property(quorum_system, N):
     len_of_quorum = len(quorum_system)
     total_overlap_count = 0
     for i in range(pow(N, len_of_quorum)):
-        # print(all_product_of_all_rotation_of_all_quorom_list[i], end='')
-        # print(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i]))
-        # print(len(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i])))
+        print(all_product_of_all_rotation_of_all_quorom_list[i], end='')
+        print(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i]))
+        print(len(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i])))
         total_overlap_count += len(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i]))
         if len(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i])):
             count += 1
-    print('total 組合::', count)
+    print('total 組合:', count)
     print('total_overlap: ', total_overlap_count)
     average_overlap = total_overlap_count / count
     if count == pow(N, len_of_quorum):
@@ -55,10 +55,10 @@ def is_rotation_m_closure_property(quorum_system, N):
 
 
 if __name__ == '__main__':
-    N = 9
-    C2 = [[0, 1, 2, 4, 5, 7, 8], [0, 2, 3, 5, 6, 7, 8], [0, 1, 2, 3, 4, 5, 6]]
+    # N = 9
+    # C = [[0, 1, 2, 4, 5, 7, 8], [0, 2, 3, 5, 6, 7, 8], [0, 1, 2, 3, 4, 5, 6]]
 
-    # N = 30
-    # C = [[0, 5, 10, 15, 20, 25], [0, 3, 6, 9, 12, 15, 18, 21, 24, 27],
-    #      [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28]]
-    print(is_rotation_m_closure_property(C2, N))
+    N = 30
+    C = [[0, 5, 10, 15, 20, 25], [0, 3, 6, 9, 12, 15, 18, 21, 24, 27],
+         [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28]]
+    print(is_rotation_m_closure_property(C, N))

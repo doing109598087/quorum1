@@ -3,7 +3,7 @@ from rotation_closure_property.is_rotation_closure_property import is_rotation_c
 
 
 # 改N可以改grid方陣
-N = 16
+N = 25
 matrix_np = (np.arange(N)).reshape(int(np.sqrt(N)), int(np.sqrt(N)))  # 建立二維矩陣
 print(matrix_np)
 grid_matrix_total = list()

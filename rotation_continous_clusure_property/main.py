@@ -6,7 +6,7 @@ def is_two_quorum_continous_intersection(quorum1, quorum2):
     quorum2.sort()
     for i in range(len(quorum1)-1):
         for j in range(len(quorum2)-1):
-            # print(Q1[i], Q2[j])
+            print(Q1[i], Q2[j])
             if quorum1[i] == quorum2[j] and quorum1[i + 1] == quorum2[j + 1]:
                 return True
     return False
