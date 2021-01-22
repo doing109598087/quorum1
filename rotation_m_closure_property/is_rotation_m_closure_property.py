@@ -39,10 +39,11 @@ def is_rotation_m_closure_property(quorum_system, N):
     len_of_quorum = len(quorum_system)
     total_overlap_count = 0
     for i in range(pow(N, len_of_quorum)):
-        # print(all_product_of_all_rotation_of_all_quorom_list[i], end='')
-        # print(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i]))
-        # print(len(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i])))
-        total_overlap_count += len(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i]))
+        print(all_product_of_all_rotation_of_all_quorom_list[i], end='')
+        overlap_of_list = overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i])
+        print(overlap_of_list)
+        print(len(overlap_of_list))
+        total_overlap_count += len(overlap_of_list)
         if len(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i])):
             count += 1
     print('total 組合:', count)
