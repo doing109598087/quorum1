@@ -14,7 +14,7 @@ def get_two_quorum_continuous_overlap(quorum1, quorum2):
 
 def get_all_quorum_continuous_overlap(quorum_system):
     first_two_quorum_continuous_overlap = get_two_quorum_continuous_overlap(quorum_system[0], quorum_system[1])
-    all_quorum_continuous_overlap = copy.deepcopy(first_two_quorum_continuous_overlap)
+    all_quorum_continuous_overlap = copy.copy(first_two_quorum_continuous_overlap)
     for i in range(len(first_two_quorum_continuous_overlap)):
         # print(all_quorum_continuous_overlap)
         for quorum in quorum_system:
@@ -56,10 +56,10 @@ def is_rotation_continuous_m_closure_property(quorum_system, N):
     for i in range(pow(N, len_of_quorum)):
         # if i % 1000 == 0:
         #     print(i)
-        print(all_product_of_all_rotation_of_all_quorom_list[i], end='')
+        # print(all_product_of_all_rotation_of_all_quorom_list[i], end='')
         overlap_of_list = get_all_quorum_continuous_overlap(all_product_of_all_rotation_of_all_quorom_list[i])
-        print(overlap_of_list)
-        print(len(overlap_of_list))
+        # print(overlap_of_list)
+        # print(len(overlap_of_list))
         total_overlap_count += len(overlap_of_list)
         if len(overlap_of_list):
             overlap_count += 1
@@ -77,7 +77,7 @@ def is_rotation_continuous_m_closure_property(quorum_system, N):
 if __name__ == '__main__':
     start_time = time.time()
 
-    N = 21
+    N = 40
     C = [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
          [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
          [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]]
