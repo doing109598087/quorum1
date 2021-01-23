@@ -1,3 +1,5 @@
+from same_function import create_all_product_of_all_rotation_of_all_quorom, sort_quorum_system_by_len
+
 from itertools import product
 import numpy as np
 # overlap refactor: https://www.coderbridge.com/@kuanghsuan/2b75b952ea6f402ba11a0de654077b91
@@ -8,35 +10,12 @@ def get_two_quorum_overlap(quorum1, quorum2):
     return set(quorum1).intersection(quorum2)
 
 
-def sort_quorum_system_by_len(quorum_system):
-    len_list = [len(quorum) for quorum in quorum_system]
-    return [x for _, x in sorted(zip(len_list, quorum_system))]
-
-
 def get_all_quorum_continuous_overlap(quorum_system):
     quorum_system = sort_quorum_system_by_len(quorum_system)
     intersection_list = get_two_quorum_overlap(quorum_system[0], quorum_system[1])
     for i in range(len(quorum_system)):
         intersection_list = get_two_quorum_overlap(intersection_list, quorum_system[i])
     return intersection_list
-
-
-def create_one_quorum_rotation(quorum, N):
-    return [[(n + i) % N for n in quorum] for i in range(N)]
-
-
-def create_all_quorum_rotation(quorum_system, N):
-    return [create_one_quorum_rotation(quorum_system[i], N) for i in range(len(quorum_system))]
-
-
-def create_all_product_of_all_rotation_of_all_quorom(quorum_system, N):
-    quorum_system = np.array(quorum_system)
-    len_of_quorum = len(quorum_system)
-    comb = list(product([n for n in range(N)], repeat=len_of_quorum))
-    all_rotation_of_all_quorom = create_all_quorum_rotation(quorum_system, N)
-    all_product_of_all_rotation_of_all_quorom_list = [
-        [all_rotation_of_all_quorom[i][com[i]] for i in range(len_of_quorum)] for com in comb]
-    return all_product_of_all_rotation_of_all_quorom_list
 
 
 def is_rotation_m_closure_property(quorum_system, N):

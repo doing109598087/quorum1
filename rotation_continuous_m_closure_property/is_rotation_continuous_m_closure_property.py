@@ -1,6 +1,6 @@
+from same_function import create_all_product_of_all_rotation_of_all_quorom, sort_quorum_system_by_len
 import copy
 import time
-from itertools import product
 import numpy as np
 from numba import njit, jit  # for 加速運算
 import warnings
@@ -10,10 +10,10 @@ warnings.filterwarnings('ignore')
 
 @jit(nopython=True, parallel=True)  # for 加速
 def get_two_quorum_continuous_overlap(quorum1, quorum2, N):
-    quorum1.sort()
-    quorum2.sort()
     quorum1 = np.array(quorum1)
     quorum2 = np.array(quorum2)
+    quorum1.sort()
+    quorum2.sort()
     all_continuous_overlap = [[quorum1[i], quorum1[i + 1]] for i in range(len(quorum1) - 1) for j in
                               range(len(quorum2) - 1) if
                               quorum1[i] == quorum2[j] and quorum1[i + 1] == quorum2[j + 1] and quorum1[i] + 1 ==
@@ -22,11 +22,6 @@ def get_two_quorum_continuous_overlap(quorum1, quorum2, N):
         all_continuous_overlap.append([quorum1[-1], 0])
 
     return all_continuous_overlap
-
-
-def sort_quorum_system_by_len(quorum_system):
-    len_list = [len(quorum) for quorum in quorum_system]
-    return [x for _, x in sorted(zip(len_list, quorum_system))]
 
 
 def get_all_quorum_continuous_overlap(quorum_system, N):
@@ -48,24 +43,6 @@ def get_all_quorum_continuous_overlap(quorum_system, N):
     return all_quorum_continuous_overlap
 
 
-@njit  # for 加速
-def create_one_quorum_rotation(quorum, N):
-    return [[(n + i) % N for n in quorum] for i in range(N)]
-
-
-def create_all_quorum_rotation(quorum_system, N):
-    return [create_one_quorum_rotation(quorum_system[i], N) for i in range(len(quorum_system))]
-
-
-def create_all_product_of_all_rotation_of_all_quorom(quorum_system, N):
-    len_of_quorum = len(quorum_system)
-    comb = list(product([n for n in range(N)], repeat=len_of_quorum))
-    all_rotation_of_all_quorom = create_all_quorum_rotation(quorum_system, N)
-    all_product_of_all_rotation_of_all_quorom_list = [
-        [all_rotation_of_all_quorom[i][com[i]] for i in range(len_of_quorum)] for com in comb]
-    return all_product_of_all_rotation_of_all_quorom_list
-
-
 def is_rotation_continuous_m_closure_property(quorum_system, N):
     all_product_of_all_rotation_of_all_quorom_list = create_all_product_of_all_rotation_of_all_quorom(quorum_system, N)
     total = len(all_product_of_all_rotation_of_all_quorom_list)
@@ -76,7 +53,7 @@ def is_rotation_continuous_m_closure_property(quorum_system, N):
         ##########################test#################
         # if i % 1000 == 0:
         #     print(i)
-        # if i == 100000:
+        # if i == 20000:
         #     break
         ##########################test#################
 
