@@ -14,7 +14,6 @@ def get_two_quorum_continuous_overlap(quorum1, quorum2, N):
     quorum2 = np.array(quorum2)
     quorum1.sort()
     quorum2.sort()
-
     all_continuous_overlap = [[quorum1[i], quorum1[i + 1]] for i in range(len(quorum1) - 1) for j in
                               range(len(quorum2) - 1) if
                               quorum1[i] == quorum2[j] and quorum1[i + 1] == quorum2[j + 1] and quorum1[i] + 1 ==
@@ -30,7 +29,6 @@ def get_all_quorum_continuous_overlap(quorum_system, N):
     first_two_quorum_continuous_overlap = get_two_quorum_continuous_overlap(quorum_system[0], quorum_system[1], N)
     all_quorum_continuous_overlap = copy.copy(first_two_quorum_continuous_overlap)
     for i in range(len(first_two_quorum_continuous_overlap)):
-        # print(all_quorum_continuous_overlap)
         for quorum in quorum_system:
             if first_two_quorum_continuous_overlap[i][0] in quorum and first_two_quorum_continuous_overlap[i][
                 1] in quorum:
@@ -54,8 +52,8 @@ def is_rotation_continuous_m_closure_property(quorum_system, N):
         ##########################test#################
         # if i % 1000 == 0:
         #     print(i)
-        if i == 20000:
-            break
+        # if i == 20000:
+        #     break
         ##########################test#################
 
         # print(all_product_of_all_rotation_of_all_quorom_list[i], end='')
