@@ -5,18 +5,20 @@ import random
 import copy
 import matplotlib.pyplot as plt
 import pandas as pd
+from numba import njit, jit  # for 加速運算
+import warnings
+
+warnings.filterwarnings('ignore')
 
 
+@njit  # for 加速
 def create_one_crt_quorum(p, N):
-    p_list = list()
-    for i in range(N):
-        if i % p == 0:
-            p_list.append(i)
+    p_list = [i for i in range(N) if i % p == 0]
     return p_list
 
 
 def create_crt_c_arbiter_quorum_system(list_of_p):
-    N = 1
+    N = 1  # 初始化
     for p in list_of_p:
         N *= p
 
@@ -72,7 +74,6 @@ p4 = 7
 N = p1 * p2 * p3 * p4
 crt_c_arbiter_quorum_system = create_crt_c_arbiter_quorum_system([p1, p2, p3, p4])
 
-
 print(crt_c_arbiter_quorum_system)
 crt_c_arbiter_quorum_system = sorted(crt_c_arbiter_quorum_system, reverse=True)
 
@@ -87,14 +88,16 @@ for i in range(len(crt_c_arbiter_quorum_system[0]), N + 1):
 
 # draw
 print(average_overlap_list)
-plt.plot([x for x in range(N + 1)], average_overlap_list)
+plt.plot([x for x in range(len(crt_c_arbiter_quorum_system[0]), N + 1)], average_overlap_list)
 plt.xlabel('each quorum number')
 plt.ylabel('average_overlap')
 plt.show()
+plt.savefig('crt_2357_uniform.png')
 
 # 表格
-df = pd.DataFrame(average_overlap_list, [x for x in range(N + 1)])
+df = pd.DataFrame(average_overlap_list, [x for x in range(len(crt_c_arbiter_quorum_system[0]), N + 1)])
 print(df)
+df.to_csv('crt_2357_uniform.csv', index=False)
 
 end_time = time.time()
 print("--- %s seconds ---" % (end_time - start_time))
