@@ -6,9 +6,6 @@ import copy
 import matplotlib.pyplot as plt
 import pandas as pd
 from numba import njit, jit  # for 加速運算
-import warnings
-
-warnings.filterwarnings('ignore')
 
 
 @njit  # for 加速

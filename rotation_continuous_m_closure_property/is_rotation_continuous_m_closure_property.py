@@ -3,6 +3,9 @@ import time
 from itertools import product
 import numpy as np
 from numba import njit, jit  # for 加速運算
+import warnings
+
+warnings.filterwarnings('ignore')
 
 
 @jit(nopython=True, parallel=True)  # for 加速
@@ -21,8 +24,13 @@ def get_two_quorum_continuous_overlap(quorum1, quorum2, N):
     return all_continuous_overlap
 
 
+def sort_quorum_system_by_len(quorum_system):
+    len_list = [len(quorum) for quorum in quorum_system]
+    return [x for _, x in sorted(zip(len_list, quorum_system))]
+
+
 def get_all_quorum_continuous_overlap(quorum_system, N):
-    quorum_system = sorted(quorum_system, reverse=True)
+    quorum_system = sort_quorum_system_by_len(quorum_system)
     first_two_quorum_continuous_overlap = get_two_quorum_continuous_overlap(quorum_system[0], quorum_system[1], N)
     all_quorum_continuous_overlap = copy.copy(first_two_quorum_continuous_overlap)
     for i in range(len(first_two_quorum_continuous_overlap)):
@@ -66,10 +74,10 @@ def is_rotation_continuous_m_closure_property(quorum_system, N):
     total_overlap_count = 0
     for i in range(pow(N, len_of_quorum)):
         ##########################test#################
-        # if i % 1000 == 0:
-        #     print(i)
-        # if i == 100000:
-        #     break
+        if i % 1000 == 0:
+            print(i)
+        if i == 100000:
+            break
         ##########################test#################
 
         # print(all_product_of_all_rotation_of_all_quorom_list[i], end='')
