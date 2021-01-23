@@ -13,6 +13,7 @@ def get_two_quorum_continuous_overlap(quorum1, quorum2):
 
 
 def get_all_quorum_continuous_overlap(quorum_system):
+    quorum_system = sorted(quorum_system)
     first_two_quorum_continuous_overlap = get_two_quorum_continuous_overlap(quorum_system[0], quorum_system[1])
     all_quorum_continuous_overlap = copy.copy(first_two_quorum_continuous_overlap)
     for i in range(len(first_two_quorum_continuous_overlap)):
@@ -53,9 +54,15 @@ def is_rotation_continuous_m_closure_property(quorum_system, N):
     overlap_count = 0
     len_of_quorum = len(quorum_system)
     total_overlap_count = 0
+
+    ##########################test#################
     for i in range(pow(N, len_of_quorum)):
-        # if i % 1000 == 0:
-        #     print(i)
+        if i % 1000 == 0:
+            print(i)
+        if i == 20000:
+            break
+    ##########################test#################
+
         # print(all_product_of_all_rotation_of_all_quorom_list[i], end='')
         overlap_of_list = get_all_quorum_continuous_overlap(all_product_of_all_rotation_of_all_quorom_list[i])
         # print(overlap_of_list)
@@ -68,7 +75,7 @@ def is_rotation_continuous_m_closure_property(quorum_system, N):
     print('overlap_count: ', overlap_count)
     print('total_overlap: ', total_overlap_count)
     print('average_overlap', total_overlap_count / total)  # 總交集數 / 所有時間飄移組合
-    print('average_overlap_count', overlap_count/total)  # 有交集的時間飄移組合 / 所有時間飄移組合
+    print('average_overlap_count', overlap_count / total)  # 有交集的時間飄移組合 / 所有時間飄移組合
     if overlap_count == pow(N, len_of_quorum):
         return True, average_overlap
     return False, average_overlap
@@ -77,7 +84,7 @@ def is_rotation_continuous_m_closure_property(quorum_system, N):
 if __name__ == '__main__':
     start_time = time.time()
 
-    N = 40
+    N = 50
     C = [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
          [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
          [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]]
