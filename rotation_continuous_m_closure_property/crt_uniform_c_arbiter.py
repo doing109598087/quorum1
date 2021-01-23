@@ -84,7 +84,6 @@ for i in range(len(crt_c_arbiter_quorum_system[0]), N + 1):
     is_rotation_m, average_overlap = is_rotation_continuous_m_closure_property(crt_uniform_quorum_system, N)
     print(is_rotation_m, ', average_overlap:', average_overlap)
     average_overlap_list.append(average_overlap)
-    print('percentage overlap: ', average_overlap / N)
 
 # draw
 print(average_overlap_list)
