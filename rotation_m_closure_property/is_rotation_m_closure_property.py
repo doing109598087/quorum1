@@ -35,7 +35,8 @@ def create_all_product_of_all_rotation_of_all_quorom(quorum_system, N):
 
 def is_rotation_m_closure_property(quorum_system, N):
     all_product_of_all_rotation_of_all_quorom_list = create_all_product_of_all_rotation_of_all_quorom(quorum_system, N)
-    count = 0
+    total = len(all_product_of_all_rotation_of_all_quorom_list)
+    overlap_count = 0
     len_of_quorum = len(quorum_system)
     total_overlap_count = 0
     for i in range(pow(N, len_of_quorum)):
@@ -45,12 +46,14 @@ def is_rotation_m_closure_property(quorum_system, N):
         print(len(overlap_of_list))
         total_overlap_count += len(overlap_of_list)
         if len(overlap_of_lists(all_product_of_all_rotation_of_all_quorom_list[i])):
-            count += 1
-    print('total 組合:', count)
+            overlap_count += 1
+    average_overlap = total_overlap_count / total
+    print('total 組合:', total)
+    print('overlap_count: ', overlap_count)
     print('total_overlap: ', total_overlap_count)
-    average_overlap = total_overlap_count / count
-    if count == pow(N, len_of_quorum):
-
+    print('average_overlap', total_overlap_count / total)  # 總交集數 / 所有時間飄移組合
+    print('average_overlap_count', overlap_count / total)  # 有交集的時間飄移組合 / 所有時間飄移組合
+    if overlap_count == pow(N, len_of_quorum):
         return True, average_overlap
     return False, average_overlap
 
