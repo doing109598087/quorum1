@@ -1,5 +1,5 @@
 import unittest
-from rotation_continuous_m_closure_property.crt_c_arbiter import create_crt_c_arbiter_quorum_system, \
+from rotation_continuous_m_closure_property.crt_c import create_crt_c_arbiter_quorum_system, \
     create_one_crt_quorum
 
 

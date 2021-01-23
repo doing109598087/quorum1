@@ -70,9 +70,9 @@ def add_number_to_all_quorum(quorum_system, N, final_k):
     return crt_uniform_quorum_system
 
 
-p1 = 5
+p1 = 4
 p2 = 3
-p3 = 2
+p3 = 5
 # 4, 5, 9 ok
 # 2, 3, 5 ok
 # 3, 4, 5 ok

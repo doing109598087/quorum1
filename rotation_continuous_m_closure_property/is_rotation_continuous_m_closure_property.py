@@ -74,10 +74,10 @@ def is_rotation_continuous_m_closure_property(quorum_system, N):
     total_overlap_count = 0
     for i in range(pow(N, len_of_quorum)):
         ##########################test#################
-        if i % 1000 == 0:
-            print(i)
-        if i == 100000:
-            break
+        # if i % 1000 == 0:
+        #     print(i)
+        # if i == 100000:
+        #     break
         ##########################test#################
 
         # print(all_product_of_all_rotation_of_all_quorom_list[i], end='')
