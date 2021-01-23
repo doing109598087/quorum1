@@ -13,7 +13,7 @@ def get_two_quorum_continuous_overlap(quorum1, quorum2):
 
 
 def get_all_quorum_continuous_overlap(quorum_system):
-    quorum_system = sorted(quorum_system)
+    quorum_system = sorted(quorum_system, reverse=True)
     first_two_quorum_continuous_overlap = get_two_quorum_continuous_overlap(quorum_system[0], quorum_system[1])
     all_quorum_continuous_overlap = copy.copy(first_two_quorum_continuous_overlap)
     for i in range(len(first_two_quorum_continuous_overlap)):
@@ -59,9 +59,9 @@ def is_rotation_continuous_m_closure_property(quorum_system, N):
     for i in range(pow(N, len_of_quorum)):
         if i % 1000 == 0:
             print(i)
-        if i == 20000:
+        if i == 60000:
             break
-    ##########################test#################
+        ##########################test#################
 
         # print(all_product_of_all_rotation_of_all_quorom_list[i], end='')
         overlap_of_list = get_all_quorum_continuous_overlap(all_product_of_all_rotation_of_all_quorom_list[i])

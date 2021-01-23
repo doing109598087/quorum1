@@ -28,9 +28,14 @@ def create_crt_c_arbiter_quorum_system(list_of_p):
 
 start_time = time.time()
 
-crt_c_arbiter_quorum_system = create_crt_c_arbiter_quorum_system([2, 3, 5, 7])
+p1 = 2
+p2 = 3
+p3 = 5
+p4 = 7
+N = p1 * p2 * p3 * p4
+crt_c_arbiter_quorum_system = create_crt_c_arbiter_quorum_system([p1, p2, p3, p4])
 print(crt_c_arbiter_quorum_system)
-print(is_rotation_continuous_m_closure_property(crt_c_arbiter_quorum_system, 2 * 3 * 5 * 7))
+print(is_rotation_continuous_m_closure_property(crt_c_arbiter_quorum_system, N))
 
 end_time = time.time()
 print("--- %s seconds ---" % (end_time - start_time))
