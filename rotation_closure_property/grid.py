@@ -1,5 +1,5 @@
 import numpy as np
-from rotation_closure_property.is_rotation_closure_property import is_rotation_closure
+from rotation_closure_property.is_rotation_closure_property import is_rotation_closure_property
 
 
 # 改N可以改grid方陣
@@ -23,7 +23,7 @@ for i in range(N):
         grid_system.append(grid_matrix_total[i])
         grid_system.append(grid_matrix_total[j])
         print(grid_matrix_total[i], grid_matrix_total[j])
-        print(is_rotation_closure(grid_system, N))
+        print(is_rotation_closure_property(grid_system, N))
 
 
 

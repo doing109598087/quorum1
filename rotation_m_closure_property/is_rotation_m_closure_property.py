@@ -11,7 +11,7 @@ def get_two_quorum_intersection(quorum1, quorum2):
 
 
 def get_all_quorum_continuous_intersection(quorum_system):
-    quorum_system = sort_quorum_system_by_len(quorum_system)
+    # quorum_system = sort_quorum_system_by_len(quorum_system)
     intersection_list = get_two_quorum_intersection(quorum_system[0], quorum_system[1])
     for i in range(len(quorum_system)):
         intersection_list = get_two_quorum_intersection(intersection_list, quorum_system[i])

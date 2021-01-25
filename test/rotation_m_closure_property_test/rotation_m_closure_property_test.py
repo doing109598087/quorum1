@@ -1,6 +1,6 @@
 import unittest
 from rotation_m_closure_property.is_rotation_m_closure_property import get_two_quorum_intersection, \
-    get_all_quorum_continuous_intersection
+    get_all_quorum_continuous_intersection, c
 
 
 class test_rotation_m_intersection(unittest.TestCase):
