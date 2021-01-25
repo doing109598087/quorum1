@@ -2,20 +2,13 @@ from rotation_continuous_m_closure_property.is_rotation_continuous_m_closure_pro
     is_rotation_continuous_m_closure_property
 import time
 
-
-def create_one_crt_quorum(p, N):
-    p_list = list()
-    for i in range(N):
-        if i % p == 0:
-            p_list.append(i)
-    return p_list
+from same_function import create_one_crt_quorum
 
 
 def create_crt_c_arbiter_quorum_system(list_of_p):
     N = 1
     for p in list_of_p:
         N *= p
-
     crt_c_arbiter_quorum_system = list()
     p0_crt_quorum = create_one_crt_quorum(list_of_p[0], N)
     for i in range(1, len(list_of_p)):

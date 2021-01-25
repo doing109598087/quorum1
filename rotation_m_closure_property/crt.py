@@ -2,13 +2,7 @@ import time
 from rotation_m_closure_property.is_rotation_m_closure_property import is_rotation_m_closure_property
 import numpy as np
 
-
-def create_one_crt_quorum(p, N):
-    p_list = list()
-    for i in range(N):
-        if i % p == 0:
-            p_list.append(i)
-    return p_list
+from same_function import create_one_crt_quorum
 
 
 def create_all_crt_quorum(pm_list, N):
@@ -50,8 +44,8 @@ start_time = time.time()
 
 crt_qrorum_system = create_all_crt_quorum(pm_list, N)
 print(crt_qrorum_system)
-is_rotation_m, average_overlap = is_rotation_m_closure_property(crt_qrorum_system, N)
-print(is_rotation_m, ', average_overlap: ', average_overlap)
+is_rotation_m, average_intersection = is_rotation_m_closure_property(crt_qrorum_system, N)
+print(is_rotation_m, ', average_intersection: ', average_intersection)
 
 end_time = time.time()
 

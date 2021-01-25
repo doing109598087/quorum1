@@ -2,34 +2,35 @@ from same_function import create_all_product_of_all_rotation_of_all_quorom
 from itertools import combinations
 
 
-def is_two_quorum_intersection(quorum1, quorum2):
-    if list(set(quorum1).intersection(quorum2)) != 0:
-        return True
-    return False
+def get_two_quorum_intersection(quorum1, quorum2):
+    return set(quorum1).intersection(quorum2)
 
 
 def is_quorums_intersection(quorum_system):
+    all_two_quorum_intersection = list()
     len_of_quorums = len(quorum_system)
     comb = list(combinations([n for n in range(len_of_quorums)], 2))
     count = 0
     for com in comb:
-        if is_two_quorum_intersection(quorum_system[com[0]], quorum_system[com[1]]):
+        intersection = get_two_quorum_intersection(quorum_system[com[0]], quorum_system[com[1]])
+        all_two_quorum_intersection.append(intersection)
+        print(intersection, end='')
+        if len(intersection) != 0:
             count += 1
+    print()
     if count == len(comb):
-        return True
-    return False
+        return True, all_two_quorum_intersection
+    return False, all_two_quorum_intersection
 
 
 def is_rotation_closure(quorum_system, N):
     all_product_of_all_rotation_of_all_quorom_list = create_all_product_of_all_rotation_of_all_quorom(quorum_system, N)
     count = 0
     len_of_quorum = len(quorum_system)
-    total_overlap_count = 0
+    total_intersection_count = 0
     for i in range(pow(N, len_of_quorum)):
         print(all_product_of_all_rotation_of_all_quorom_list[i], end='')
-        print(is_quorums_intersection(all_product_of_all_rotation_of_all_quorom_list[i]))
-
-        if is_quorums_intersection(all_product_of_all_rotation_of_all_quorom_list[i]):
+        if is_quorums_intersection(all_product_of_all_rotation_of_all_quorom_list[i])[0]:
             count += 1
     if count == pow(N, len_of_quorum):
         print(count)
@@ -38,7 +39,7 @@ def is_rotation_closure(quorum_system, N):
 
 
 if __name__ == '__main__':
-    N = 8
+    N = 10
     C1 = [[0, 1, 2, 4], [3, 4, 5, 7], [0, 2, 6, 7]]
     print(is_rotation_closure(C1, N))
     # N = 16

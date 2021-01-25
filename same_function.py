@@ -21,6 +21,13 @@ def create_all_product_of_all_rotation_of_all_quorom(quorum_system, N):
     return all_product_of_all_rotation_of_all_quorom_list
 
 
+# other
 def sort_quorum_system_by_len(quorum_system):
     len_list = [len(quorum) for quorum in quorum_system]
     return [x for _, x in sorted(zip(len_list, quorum_system))]
+
+
+# crt
+def create_one_crt_quorum(p, N):
+    p_list = [i for i in range(N) if i % p == 0]
+    return p_list

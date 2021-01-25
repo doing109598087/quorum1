@@ -87,26 +87,26 @@ crt_quorum_system = create_all_crt_quorum(pm_list, N)
 print(crt_quorum_system)
 
 # add uniform_k_arbiter
-average_overlap_list = list()
+average_intersection_list = list()
 for i in range(N+1):
     print(i, ":")
     crt_uniform_quorum_system = add_number_to_all_quorum(crt_quorum_system, N, i)
     print(crt_uniform_quorum_system)
-    is_rotation_m, average_overlap = is_rotation_m_closure_property(crt_uniform_quorum_system, N)
-    print(is_rotation_m, ', average_overlap:', average_overlap)
-    average_overlap_list.append(average_overlap)
-    print('percentage overlap: ', average_overlap/N)
+    is_rotation_m, average_intersection = is_rotation_m_closure_property(crt_uniform_quorum_system, N)
+    print(is_rotation_m, ', average_intersection:', average_intersection)
+    average_intersection_list.append(average_intersection)
+    print('percentage intersection: ', average_intersection/N)
 
 
 # draw
-print(average_overlap_list)
-plt.plot([x for x in range(N+1)], average_overlap_list)
+print(average_intersection_list)
+plt.plot([x for x in range(N+1)], average_intersection_list)
 plt.xlabel('each quorum number')
-plt.ylabel('average_overlap')
+plt.ylabel('average_intersection')
 plt.show()
 
 # 表格
-df = pd.DataFrame(average_overlap_list, [x for x in range(N+1)])
+df = pd.DataFrame(average_intersection_list, [x for x in range(N+1)])
 print(df)
 
 

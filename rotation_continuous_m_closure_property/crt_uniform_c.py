@@ -75,24 +75,24 @@ print(crt_c_arbiter_quorum_system)
 crt_c_arbiter_quorum_system = sorted(crt_c_arbiter_quorum_system, reverse=True)
 
 # add uniform_k_arbiter
-average_overlap_list = list()
+average_intersection_list = list()
 for i in range(len(crt_c_arbiter_quorum_system[0]), N + 1):
     print(i, ":")
     crt_uniform_quorum_system = add_number_to_all_quorum(crt_c_arbiter_quorum_system, N, i)
-    is_rotation_m, average_overlap = is_rotation_continuous_m_closure_property(crt_uniform_quorum_system, N)
-    print(is_rotation_m, ', average_overlap:', average_overlap)
-    average_overlap_list.append(average_overlap)
+    is_rotation_m, average_intersection = is_rotation_continuous_m_closure_property(crt_uniform_quorum_system, N)
+    print(is_rotation_m, ', average_intersection:', average_intersection)
+    average_intersection_list.append(average_intersection)
 
 # draw
-print(average_overlap_list)
-plt.plot([x for x in range(len(crt_c_arbiter_quorum_system[0]), N + 1)], average_overlap_list)
+print(average_intersection_list)
+plt.plot([x for x in range(len(crt_c_arbiter_quorum_system[0]), N + 1)], average_intersection_list)
 plt.xlabel('each quorum number')
-plt.ylabel('average_overlap')
+plt.ylabel('average_intersection')
 plt.show()
 plt.savefig('crt_2357_uniform.png')
 
 # 表格
-df = pd.DataFrame(average_overlap_list, [x for x in range(len(crt_c_arbiter_quorum_system[0]), N + 1)])
+df = pd.DataFrame(average_intersection_list, [x for x in range(len(crt_c_arbiter_quorum_system[0]), N + 1)])
 print(df)
 df.to_csv('crt_2357_uniform.csv', index=False)
 
