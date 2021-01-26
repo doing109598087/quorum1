@@ -18,10 +18,11 @@ def create_one_continuous_grid_quorum(N, start_row, start_column):
     grid_quorum.sort()
     return grid_quorum
 
-# N = 36
-# grid_quorum_system = list()
-# grid_quorum1 = create_one_continuous_grid_quorum(N, 2, 3)
-# grid_quorum2 = create_one_continuous_grid_quorum(N, 0, 0)
-# grid_quorum_system.append(grid_quorum1)
-# grid_quorum_system.append(grid_quorum2)
-# print(is_rotation_continuous_closure_property(grid_quorum_system, N))
+
+N = 36
+grid_quorum_system = list()
+grid_quorum1 = create_one_continuous_grid_quorum(N, 2, 3)
+grid_quorum2 = create_one_continuous_grid_quorum(N, 0, 0)
+grid_quorum_system.append(grid_quorum1)
+grid_quorum_system.append(grid_quorum2)
+print(is_rotation_continuous_closure_property(grid_quorum_system, N))

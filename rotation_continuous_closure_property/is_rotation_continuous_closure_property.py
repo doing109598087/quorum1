@@ -1,23 +1,7 @@
-from same_function import create_all_product_of_all_rotation_of_all_quorom
+from same_function import create_all_product_of_all_rotation_of_all_quorom, get_two_quorum_continuous_intersection
 from numba import jit
 import numpy as np
 from itertools import combinations
-
-
-@jit(nopython=True, parallel=True)  # for 加速
-def get_two_quorum_continuous_intersection(quorum1, quorum2, N):
-    quorum1 = np.array(quorum1)
-    quorum2 = np.array(quorum2)
-    quorum1.sort()
-    quorum2.sort()
-    all_continuous_intersection = [[quorum1[i], quorum1[i + 1]] for i in range(len(quorum1) - 1) for j in
-                                   range(len(quorum2) - 1) if
-                                   quorum1[i] == quorum2[j] and quorum1[i + 1] == quorum2[j + 1] and quorum1[i] + 1 ==
-                                   quorum1[i + 1]]
-    if quorum1[-1] == quorum2[-1] == N - 1 and quorum1[0] == quorum2[0] == 0:
-        all_continuous_intersection.append([quorum1[-1], 0])
-
-    return all_continuous_intersection
 
 
 def get_all_quorum_continuous_intersection(quorum_system, N):

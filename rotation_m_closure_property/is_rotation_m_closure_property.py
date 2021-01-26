@@ -1,13 +1,4 @@
-from same_function import create_all_product_of_all_rotation_of_all_quorom, sort_quorum_system_by_len
-
-from itertools import product
-import numpy as np
-# intersection refactor: https://www.coderbridge.com/@kuanghsuan/2b75b952ea6f402ba11a0de654077b91
-from numba import njit, jit  # for 加速運算
-
-
-def get_two_quorum_intersection(quorum1, quorum2):
-    return set(quorum1).intersection(quorum2)
+from same_function import create_all_product_of_all_rotation_of_all_quorom, get_two_quorum_intersection
 
 
 def get_all_quorum_continuous_intersection(quorum_system):

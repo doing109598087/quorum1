@@ -1,10 +1,6 @@
-from same_function import create_all_product_of_all_rotation_of_all_quorom
+from same_function import create_all_product_of_all_rotation_of_all_quorom, get_two_quorum_intersection
 from itertools import combinations
 import numpy as np
-
-
-def get_two_quorum_intersection(quorum1, quorum2):
-    return set(quorum1).intersection(quorum2)
 
 
 def is_and_get_quorum_system_intersection(quorum_system):
