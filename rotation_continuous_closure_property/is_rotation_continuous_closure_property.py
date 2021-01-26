@@ -1,4 +1,5 @@
-from same_function import create_all_product_of_all_rotation_of_all_quorom, get_two_quorum_continuous_intersection
+from same_function import create_all_product_of_all_rotation_of_all_quorom, get_two_quorum_continuous_intersection, \
+    compute_one_rotation_average_intersection
 from numba import jit
 import numpy as np
 from itertools import combinations
@@ -17,13 +18,6 @@ def get_all_quorum_continuous_intersection(quorum_system, N):
     if count == len(comb):
         return True, all_two_quorum_intersection
     return False, all_two_quorum_intersection
-
-
-def compute_one_rotation_average_intersection(all_two_quorum_intersection):
-    count = 0
-    for two_quorum_intersection in all_two_quorum_intersection:
-        count += len(two_quorum_intersection)
-    return count / len(all_two_quorum_intersection)
 
 
 def is_rotation_continuous_closure_property(quorum_system, N):
