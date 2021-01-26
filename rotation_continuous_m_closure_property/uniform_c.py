@@ -16,7 +16,7 @@ def create_uniform_c_arbiter_quorum_system(N, m):
 if __name__ == '__main__':
     start_time = time.time()
     # =============================================#
-    N = 210
+    N = 20
     m = 3
     uniform_C_arbiter_quorum_system = create_uniform_c_arbiter_quorum_system(N, m)
     print(uniform_C_arbiter_quorum_system)
@@ -24,3 +24,5 @@ if __name__ == '__main__':
     # =============================================#
     end_time = time.time()
     print("--- %s seconds ---" % (end_time - start_time))
+
+    #

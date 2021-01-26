@@ -15,9 +15,9 @@ def get_two_quorum_continuous_intersection(quorum1, quorum2, N):
     quorum1.sort()
     quorum2.sort()
     all_continuous_intersection = [[quorum1[i], quorum1[i + 1]] for i in range(len(quorum1) - 1) for j in
-                              range(len(quorum2) - 1) if
-                              quorum1[i] == quorum2[j] and quorum1[i + 1] == quorum2[j + 1] and quorum1[i] + 1 ==
-                              quorum1[i + 1]]
+                                   range(len(quorum2) - 1) if
+                                   quorum1[i] == quorum2[j] and quorum1[i + 1] == quorum2[j + 1] and quorum1[i] + 1 ==
+                                   quorum1[i + 1]]
     if quorum1[-1] == quorum2[-1] == N - 1 and quorum1[0] == quorum2[0] == 0:
         all_continuous_intersection.append([quorum1[-1], 0])
 
@@ -26,7 +26,8 @@ def get_two_quorum_continuous_intersection(quorum1, quorum2, N):
 
 def get_all_quorum_continuous_intersection(quorum_system, N):
     quorum_system = sort_quorum_system_by_len(quorum_system)
-    first_two_quorum_continuous_intersection = get_two_quorum_continuous_intersection(quorum_system[0], quorum_system[1], N)
+    first_two_quorum_continuous_intersection = get_two_quorum_continuous_intersection(quorum_system[0],
+                                                                                      quorum_system[1], N)
     all_quorum_continuous_intersection = copy.copy(first_two_quorum_continuous_intersection)
     for i in range(len(first_two_quorum_continuous_intersection)):
         for quorum in quorum_system:
@@ -57,7 +58,8 @@ def is_rotation_continuous_m_closure_property(quorum_system, N):
         ##########################test#################
 
         # print(all_product_of_all_rotation_of_all_quorom_list[i], end='')
-        intersection_of_list = get_all_quorum_continuous_intersection(all_product_of_all_rotation_of_all_quorom_list[i], N)
+        intersection_of_list = get_all_quorum_continuous_intersection(all_product_of_all_rotation_of_all_quorom_list[i],
+                                                                      N)
         # print(intersection_of_list)
         # print(len(intersection_of_list))
         total_intersection_count += len(intersection_of_list)

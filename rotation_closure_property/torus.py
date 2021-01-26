@@ -27,7 +27,7 @@ N = 16
 print(create_one_torus_quorum(16, 2, 8, 0))
 different_column_list = list()
 temp_list1 = create_one_torus_quorum(16, 2, 8, 0)
-temp_list2 = create_one_torus_quorum(16, 2, 8, 0)
+temp_list2 = create_one_torus_quorum(16, 2, 8, 6)
 different_column_list.append(temp_list1)
 different_column_list.append(temp_list2)
 
