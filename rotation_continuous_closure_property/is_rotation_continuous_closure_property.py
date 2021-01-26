@@ -50,7 +50,8 @@ def is_rotation_continuous_closure_property(quorum_system, N):
     all_average_list = list()
     for i in range(pow(N, len_of_quorum)):
         print(all_product_of_all_rotation_of_all_quorum_list[i], end='')
-        is_intersection = get_all_quorum_continuous_intersection(all_product_of_all_rotation_of_all_quorum_list[i], N)[0]
+        is_intersection = get_all_quorum_continuous_intersection(all_product_of_all_rotation_of_all_quorum_list[i], N)[
+            0]
         intersection = get_all_quorum_continuous_intersection(all_product_of_all_rotation_of_all_quorum_list[i], N)[1]
         print(intersection, end='')
         one_rotation_average_intersection = compute_one_rotation_average_intersection(intersection)
@@ -70,4 +71,3 @@ if __name__ == '__main__':
     N = 24
     C = [[0, 8, 16, 1, 9, 17, 2, 3, 4, 5, 6], [2, 10, 18, 3, 11, 19, 12, 13, 14, 15, 16]]
     print(is_rotation_continuous_closure_property(C, N))
-
