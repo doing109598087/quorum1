@@ -1,10 +1,16 @@
 import unittest
-from same_function import create_one_quorum_rotation
-import numpy as np
+from same_function import get_one_of_two_quorum_continuous_intersection, get_all_of_two_quorum_continuous_intersection
 
 
-# class Test_create_quorum_rotation(unittest.TestCase):
-    # def test_create_one_quorum_rotation(self):
-        # self.assertEqual(create_one_quorum_rotation([0, 1, 2], 3), np.array([[0, 1, 2],
-        #                                                                      [1, 2, 0],
-        #                                                                      [2, 0, 1]]))
+class Test_continuous_intersection(unittest.TestCase):
+    def test_get_one_of_two_quorum_continuous_intersection(self):
+        self.assertEqual([0, 1, 2], get_one_of_two_quorum_continuous_intersection([0, 1, 2], [0, 1, 2], 4, 0), )
+        self.assertEqual([2, 3, 4], get_one_of_two_quorum_continuous_intersection([0, 2, 3, 4], [0, 1, 2, 3, 4], 6, 2))
+        self.assertEqual([2, 3, 0], get_one_of_two_quorum_continuous_intersection([0, 2, 3], [0, 1, 2, 3], 4, 2))
+        self.assertEqual([],
+                         get_one_of_two_quorum_continuous_intersection([0, 1, 2, 7, 8, 9], [0, 1, 2, 7, 8, 9], 10, 0))
+
+    def test_get_all_of_two_quorum_continuous_intersection(self):
+        self.assertEqual(get_all_of_two_quorum_continuous_intersection([0, 1, 2, 3, 5, 6, 7], [0, 1, 2, 3, 5, 6, 7], 10),
+                         [[0, 1, 2, 3], [5, 6, 7]])
+        self.assertEqual([[0, 1, 2, 7, 8, 9]], get_all_of_two_quorum_continuous_intersection([0, 1, 2, 7, 8, 9], [0, 1, 2, 7, 8, 9], 10))
