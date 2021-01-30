@@ -1,4 +1,8 @@
-from same_function import create_all_product_of_all_rotation_of_all_quorom, get_two_quorum_intersection
+from same_function import create_all_product_of_all_rotation_of_all_quorom
+
+
+def get_two_quorum_intersection(quorum1, quorum2):
+    return set(quorum1).intersection(quorum2)
 
 
 def get_all_quorum_continuous_intersection(quorum_system):
