@@ -88,8 +88,17 @@ def get_all_of_two_quorum_continuous_intersection(quorum1, quorum2, N):
             index += len(one_intersction)
         else:
             index += 1
+
     if all_continuous_intersection[0][0] == 0 and all_continuous_intersection[-1][-1] == N - 1:
         all_continuous_intersection[0] += all_continuous_intersection[-1]
         all_continuous_intersection.pop()
+    elif all_continuous_intersection[0][0] == 0 and N - 1 in q3:
+        all_continuous_intersection[0].append(N - 1)
+    elif all_continuous_intersection[-1][-1] == N - 1 and 0 in q3:
+        all_continuous_intersection[-1].append(0)
+    elif N - 1 in q3 and 0 in q3:
+        all_continuous_intersection.append([0, N - 1])
+    else:
+        pass
 
     return all_continuous_intersection
