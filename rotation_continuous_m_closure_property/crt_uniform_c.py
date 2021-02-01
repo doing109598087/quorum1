@@ -79,6 +79,7 @@ average_intersection_list = list()
 for i in range(len(crt_c_arbiter_quorum_system[0]), N + 1):
     print(i, ":")
     crt_uniform_quorum_system = add_number_to_all_quorum(crt_c_arbiter_quorum_system, N, i)
+    print(crt_uniform_quorum_system)
     is_rotation_m, average_intersection = is_rotation_continuous_m_closure_property(crt_uniform_quorum_system, N)
     print(is_rotation_m, ', average_intersection:', average_intersection)
     average_intersection_list.append(average_intersection)

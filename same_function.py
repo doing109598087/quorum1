@@ -6,7 +6,8 @@ from numba import njit, jit
 
 @njit  # for 加速
 def create_one_quorum_rotation(quorum, N):
-    return [[(n + i) % N for n in quorum] for i in range(N)]
+    # return [[(n + i) % N for n in quorum] for i in range(N)]
+    return [sorted([(n + i) % N for n in quorum]) for i in range(N)]
 
 
 def create_all_quorum_rotation(quorum_system, N):
@@ -36,5 +37,6 @@ def compute_one_rotation_average_intersection(all_two_quorum_intersection):
 # crt
 def create_one_crt_quorum(p, N):
     return [i for i in range(N) if i % p == 0]
+
 
 
