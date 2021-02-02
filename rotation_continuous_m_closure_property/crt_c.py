@@ -10,15 +10,12 @@ def create_one_crt_quorum(p, N):
     return [i for i in range(N) if i % p == 0]
 
 
-def create_crt_c_arbiter_quorum_system(list_of_p):
+def create_crt_c_arbiter_quorum_system(prime_number_list):
     N = 1
-    for p in list_of_p:
+    for p in prime_number_list:
         N *= p
-    p0_crt_quorum = create_one_crt_quorum(list_of_p[0], N)
-    crt_c_arbiter_quorum_system = [set(p0_crt_quorum + create_one_crt_quorum(list_of_p[i], N)) for i in
-                                   range(1, len(list_of_p))]
-
-    return crt_c_arbiter_quorum_system
+    return [set(create_one_crt_quorum(prime_number_list[0], N) + create_one_crt_quorum(prime_number_list[i], N)) for i in
+            range(1, len(prime_number_list))]
 
 
 start_time = time.time()
@@ -34,4 +31,3 @@ print(crt_c_arbiter_quorum_system)
 
 end_time = time.time()
 print("--- %s seconds ---" % (end_time - start_time))
-
