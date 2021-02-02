@@ -2,7 +2,6 @@ from rotation_continuous_m_closure_property.is_rotation_continuous_m_closure_pro
     is_rotation_continuous_m_closure_property
 import time
 
-
 # from same_function import create_one_crt_quorum
 
 
@@ -11,11 +10,22 @@ def create_one_crt_quorum(p, N):
 
 
 def create_crt_c_arbiter_quorum_system(prime_number_list):
+    # N = 1
+    # for p in prime_number_list:
+    #     N *= p
+    # crt_c_arbiter_quorum_system = list()
+    # p0_crt_quorum = create_one_crt_quorum(prime_number_list[0], N)
+    # for i in range(1, len(prime_number_list)):
+    #     crt_c_arbiter_quorum = p0_crt_quorum + create_one_crt_quorum(prime_number_list[i], N)
+    #     crt_c_arbiter_quorum = set(crt_c_arbiter_quorum)
+    #     crt_c_arbiter_quorum_system.append(crt_c_arbiter_quorum)
+    # return crt_c_arbiter_quorum_system
+
     N = 1
     for p in prime_number_list:
         N *= p
-    return [set(create_one_crt_quorum(prime_number_list[0], N) + create_one_crt_quorum(prime_number_list[i], N)) for i in
-            range(1, len(prime_number_list))]
+    return [set(create_one_crt_quorum(prime_number_list[0], N) + create_one_crt_quorum(prime_number_list[i], N)) for i
+            in range(1, len(prime_number_list))]
 
 
 start_time = time.time()
