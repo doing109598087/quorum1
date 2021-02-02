@@ -80,7 +80,7 @@ for i in range(N + 1):
 # draw
 print(average_intersection_list)
 plt.plot([x for x in range(N + 1)], average_intersection_list)
-plt.xlabel('each quorum number')
+plt.xlabel('quorum size')
 plt.ylabel('average_intersection')
 plt.show()
 

@@ -12,8 +12,6 @@ warnings.filterwarnings('ignore')
 def get_two_quorum_continuous_intersection(quorum1, quorum2, N):
     quorum1 = np.array(quorum1)
     quorum2 = np.array(quorum2)
-    # quorum1.sort()
-    # quorum2.sort()
     all_continuous_intersection = [[quorum1[i], quorum1[i + 1]] for i in range(len(quorum1) - 1) for j in
                                    range(len(quorum2) - 1) if
                                    quorum1[i] == quorum2[j] and quorum1[i + 1] == quorum2[j + 1] and quorum1[i] + 1 ==
@@ -52,13 +50,13 @@ def is_rotation_continuous_m_closure_property(quorum_system, N):
     average_length_list = list()
     for i in range(pow(N, len_of_quorum)):
         ##########################test#################
-        if i % 1000 == 0:
-            print(i)
-        if i == 5000:
-            break
+        # if i % 1000 == 0:
+        #     print(i)
+        # if i == 20000:
+        #     break
         ##########################test#################
 
-        # print(all_product_of_all_rotation_of_all_quorom_list[i], end='')
+        # print(all_product_of_all_rotation_of_all_quorom_list[i])
         intersection_of_list = get_all_quorum_continuous_intersection(all_product_of_all_rotation_of_all_quorom_list[i],
                                                                       N)
         intersection_of_list_length, length = get_all_of_all_quorum_continuous_intersection(
@@ -66,21 +64,22 @@ def is_rotation_continuous_m_closure_property(quorum_system, N):
         average_length_list.append(length)
 
         # print(intersection_of_list, end='')
-        # print(len(intersection_of_list), end='')
+        # print(len(intersection_of_list))
         # print(intersection_of_list_length, length)
-        total_intersection_count += len(intersection_of_list)
-        if len(intersection_of_list):
-            intersection_count += 1
-    average_intersection = total_intersection_count / total
-    print('total 組合:', total)
-    print('intersection_count: ', intersection_count)
-    print('total_intersection: ', total_intersection_count)
-    print('average_intersection', total_intersection_count / total)  # 總交集數 / 所有時間飄移組合
-    print('average_intersection_count', intersection_count / total)  # 有交集的時間飄移組合 / 所有時間飄移組合
-    print('average_intersection_length', np.average(average_length_list))  # 有交集的時間飄移組合 / 所有時間飄移組合
-    if intersection_count == pow(N, len_of_quorum):
-        return True, average_intersection
-    return False, average_intersection
+        # print('-----------------------------------------------------------')
+        # total_intersection_count += len(intersection_of_list)
+        # if len(intersection_of_list):
+        #     intersection_count += 1
+    # average_intersection = total_intersection_count / total
+    # print('total 組合:', total)
+    # print('intersection_count: ', intersection_count)
+    # print('total_intersection: ', total_intersection_count)
+    # print('average_intersection', total_intersection_count / total)  # 總交集數 / 所有時間飄移組合
+    # print('average_intersection_count', intersection_count / total)  # 有交集的時間飄移組合 / 所有時間飄移組合
+    print('average_intersection_length', np.average(average_length_list))  # 所有時間偏移的平均 / 所有時間飄移組合
+    # if intersection_count == pow(N, len_of_quorum):
+    #     return True, average_intersection
+    # return False, average_intersection
 
 
 def get_intersection_of_all_quorum(quorum_system):
@@ -117,7 +116,7 @@ def get_all_of_all_quorum_continuous_intersection(quorum_system, N):  # for leng
             index += len(one_intersction)
         else:
             index += 1
-
+    # 判斷邊界連續交集
     if all_continuous_intersection[0][0] == 0 and all_continuous_intersection[-1][-1] == N - 1:
         all_continuous_intersection[0] += all_continuous_intersection[-1]
         all_continuous_intersection.pop()
