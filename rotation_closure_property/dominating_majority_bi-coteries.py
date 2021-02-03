@@ -15,7 +15,8 @@ def create_domination_majority_bi_coteries_clustered_member_quorum(N):
             list1 = [(x1 - x2 - 1) % N, (x2 - x1 - 1) % N]
             if max(list1) == math.floor(N / 2):
                 all_maxgap_list.append([x1, x2])
+
     return choice(all_maxgap_list)
 
 
-print(create_domination_majority_bi_coteries_clustered_member_quorum(10))
+create_domination_majority_bi_coteries_clustered_member_quorum(10)
