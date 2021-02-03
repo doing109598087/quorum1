@@ -48,9 +48,14 @@ def is_rotation_closure_property(quorum_system, N):
 
 
 if __name__ == '__main__':
-    N = 8
-    C1 = [[0, 1, 2, 4], [3, 4, 5, 7], [0, 2, 6, 7]]
-    print(is_rotation_closure_property(C1, N))
+    # N = 8
+    # C1 = [[0, 1, 2, 4], [3, 4, 5, 7], [0, 2, 6, 7]]
+    # print(is_rotation_closure_property(C1, N))
     # N = 16
     # C_grid = [[1, 4, 5, 6, 7, 9, 13], [14, 15, 3, 7, 11, 12, 13]]
-    # print(is_rotation_closure(C_grid, N))
+    # print(is_rotation_closure_property(C_grid, N))
+    N = 10
+    # C1 = [[0, 3, 6], [0, 1, 2, 4, 7]]
+    # C1 = [[6, 7, 8], [0, 3, 6, 4, 7]]
+    C1 = [[3, 4, 5, 6, 7, 8], [0, 1, 2, 3, 4, 9], [5, 9]]
+    print(is_rotation_closure_property(C1, N))
