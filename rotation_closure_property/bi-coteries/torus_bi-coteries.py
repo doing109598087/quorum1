@@ -8,11 +8,10 @@ from math import floor
 
 
 # create torus 矩陣
-def create_one_grid_torus_clustered_head_quorum(n_temp, column):
-    n = n_temp  # 16
-    t = w = int(math.sqrt(n))
+def create_one_grid_torus_clustered_head_quorum(N, column):
+    t = w = int(math.sqrt(N))
     tail_number = int(floor(w / 2))  # 元素個數
-    nd_array = (np.arange(n)).reshape(t, w)
+    nd_array = np.arange(N).reshape(t, w)
     test = column  # 取第test column一整個
     nd_0 = nd_array[:, test]
     for i in range(test, tail_number + test):
@@ -26,5 +25,14 @@ def create_one_grid_torus_clustered_head_quorum(n_temp, column):
     return nd_0
 
 
-print(create_one_grid_torus_clustered_head_quorum(9, 0))
-print(create_one_grid_torus_clustered_head_quorum(9, 1))
+def create_one_grid_torus_clustered_member_quorum(N):
+    matrix_np = (np.arange(N)).reshape(int(np.sqrt(N)), int(np.sqrt(N)))  # 建立二維矩陣
+    print(matrix_np)
+    print(matrix_np.shape)
+    for i in range(matrix_np.shape[1]):
+
+
+
+# print(create_one_grid_torus_clustered_head_quorum(9, 0))
+# print(create_one_grid_torus_clustered_head_quorum(9, 1))
+print(create_one_grid_torus_clustered_member_quorum(25))
