@@ -1,3 +1,7 @@
+# cluster head 取grid quorum one row and one column
+# cluster member 取grid quorum one column or one row? 需驗證
+
+
 import random
 import math
 from random import choice
