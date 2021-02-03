@@ -1,3 +1,6 @@
+# clustered_head_quorum:從grid 中取 one column + torus 尾巴
+# clustered_member_quorum: 從grid 中每一個column取一個數字
+
 import numpy as np
 from random import choice
 import math
@@ -23,5 +26,5 @@ def create_one_grid_torus_clustered_head_quorum(n_temp, column):
     return nd_0
 
 
-print(create_one_grid_torus_quorum(9, 0))
-print(create_one_grid_torus_quorum(9, 1))
+print(create_one_grid_torus_clustered_head_quorum(9, 0))
+print(create_one_grid_torus_clustered_head_quorum(9, 1))
