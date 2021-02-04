@@ -19,16 +19,13 @@ def create_CRT_bi_coteries_clustered_head_and_member_quorum(list_of_three_p):
     for i in range(0, k2 + 1):
         CRT_bi_coteries_clustered_head_quorum.append(p2 * i % N)
 
-    CRT_bi_coteries_clustered_member_quorum = list()
     p3 = list_of_three_p[2]
     k3 = int(N / p3 - 1)
-    for i in range(0, k3 + 1):
-        CRT_bi_coteries_clustered_member_quorum.append(p3 * i % N)
-
+    CRT_bi_coteries_clustered_member_quorum = [p3 * i % N for i in range(0, k3 + 1)]
     return list(set(CRT_bi_coteries_clustered_head_quorum)), CRT_bi_coteries_clustered_member_quorum
 
 
 p_list = [2, 3, 5]
 N = 2 * 3 * 5
 print(create_CRT_bi_coteries_clustered_head_and_member_quorum(p_list))
-print(is_rotation_closure_property(create_CRT_bi_coteries_clustered_head_and_member_quorum(p_list), N))
+# print(is_rotation_closure_property(create_CRT_bi_coteries_clustered_head_and_member_quorum(p_list), N))
