@@ -4,7 +4,6 @@ from rotation_closure_property.is_rotation_closure_property import is_rotation_c
 
 # 改N可以改grid方陣
 def create_grid_quorum(N, row, column):
-    N = 25
     matrix_np = (np.arange(N)).reshape(int(np.sqrt(N)), int(np.sqrt(N)))  # 建立二維矩陣
     return list(set(list(matrix_np[row, :]) + list(matrix_np[:, column])))
 
