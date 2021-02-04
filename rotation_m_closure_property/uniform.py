@@ -15,16 +15,16 @@ def uniform_k_arbiter_quorum_system(N, k):
 N = 9  #
 k = 2  # 在2+1=3個 quorum 中有共同交集
 
-# uniform_2_arbiter_quorum_system_list = uniform_k_arbiter_quorum_system(N, k)
-# print(uniform_2_arbiter_quorum_system_list)
-# print(is_rotation_m_closure_property(uniform_2_arbiter_quorum_system_list, N))
+uniform_2_arbiter_quorum_system_list = uniform_k_arbiter_quorum_system(N, k)
+print(uniform_2_arbiter_quorum_system_list)
+print(is_rotation_m_closure_property(uniform_2_arbiter_quorum_system_list, N))
 
-# test 100次
-true_count = 0
-for i in range(100):
-    uniform_2_arbiter_quorum_system_list = uniform_k_arbiter_quorum_system(N, k)
-    # print(uniform_2_arbiter_quorum_system_list)
-    # print(is_rotation_m_closure_property(uniform_2_arbiter_quorum_system_list, N))
-    if is_rotation_m_closure_property(uniform_2_arbiter_quorum_system_list, N)[0]:
-        true_count += 1
-print(true_count)
+# # test 100次
+# true_count = 0
+# for i in range(100):
+#     uniform_2_arbiter_quorum_system_list = uniform_k_arbiter_quorum_system(N, k)
+#     # print(uniform_2_arbiter_quorum_system_list)
+#     # print(is_rotation_m_closure_property(uniform_2_arbiter_quorum_system_list, N))
+#     if is_rotation_m_closure_property(uniform_2_arbiter_quorum_system_list, N)[0]:
+#         true_count += 1
+# print(true_count)
