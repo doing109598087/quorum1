@@ -1,6 +1,5 @@
 import numpy as np
 from random import choice
-from random import randint
 from rotation_continuous_closure_property.is_rotation_continuous_closure_property import \
     is_rotation_continuous_closure_property
 

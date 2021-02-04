@@ -7,7 +7,7 @@ def create_uniform_c_arbiter_quorum_system(N, m):
     uniform_c_arbiter_quorum_system = list()
     for i in range(m):
         uniform_C_arbiter_quorum = list()
-        for j in range(int((pow(2, m - 1) * N) / ((pow(2, m - 1)) + 1)) + 1):  # 可改
+        for j in range(int((pow(2, m - 1) * N) / ((pow(2, m - 1)) + 1)) + 1):  # 有問題
             uniform_C_arbiter_quorum.append((i + j) % N)
         uniform_c_arbiter_quorum_system.append(uniform_C_arbiter_quorum)
     return uniform_c_arbiter_quorum_system

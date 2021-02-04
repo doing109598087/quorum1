@@ -30,18 +30,18 @@ def is_rotation_closure_property(quorum_system, N):
     len_of_quorum = len(quorum_system)
     all_average_list = list()
     for i in range(pow(N, len_of_quorum)):
-        print(all_product_of_all_rotation_of_all_quorum_list[i], end='')
+        # print(all_product_of_all_rotation_of_all_quorum_list[i], end='')
         is_intersection = is_and_get_quorum_system_intersection(all_product_of_all_rotation_of_all_quorum_list[i])[0]
         intersection = is_and_get_quorum_system_intersection(all_product_of_all_rotation_of_all_quorum_list[i])[1]
-        print(intersection, end='')
+        # print(intersection, end='')
         one_rotation_average_intersection = compute_one_rotation_average_intersection(intersection)
         all_average_list.append(one_rotation_average_intersection)
-        print(one_rotation_average_intersection)
+        # print(one_rotation_average_intersection)
         if is_intersection:
             intersection_count += 1
-    print('total 組合:', total)
-    print('average_intersection: ', np.average(all_average_list))
-    print('average_intersection_count', intersection_count / total)  # 有交集的時間飄移組合 / 所有時間飄移組合
+    # print('total 組合:', total)
+    # print('average_intersection: ', np.average(all_average_list))
+    # print('average_intersection_count', intersection_count / total)  # 有交集的時間飄移組合 / 所有時間飄移組合
     if intersection_count == pow(N, len_of_quorum):
         return True
     return False
