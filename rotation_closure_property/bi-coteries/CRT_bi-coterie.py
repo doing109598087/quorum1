@@ -28,4 +28,4 @@ def create_CRT_bi_coteries_clustered_head_and_member_quorum(list_of_three_p):
 p_list = [2, 3, 5]
 N = 2 * 3 * 5
 print(create_CRT_bi_coteries_clustered_head_and_member_quorum(p_list))
-# print(is_rotation_closure_property(create_CRT_bi_coteries_clustered_head_and_member_quorum(p_list), N))
+print(is_rotation_closure_property(create_CRT_bi_coteries_clustered_head_and_member_quorum(p_list), N))
