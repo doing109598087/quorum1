@@ -1,5 +1,5 @@
-# cluster head 取grid quorum one row and one column
-# cluster member 取grid quorum one column or one row? 需驗證
+# cluster head => x, x + 1,...,(x + floor(N/2)) (mod N)
+# cluster member => {x1, x2 } where maxgap(x1x2) =max{ x1 − x2− 1(mod N), x2 − x1− 1 (mod N)}=floor(N/2)
 
 
 import random
@@ -23,4 +23,4 @@ def create_domination_majority_bi_coteries_clustered_member_quorum(N):
     return choice(all_maxgap_list)
 
 
-create_domination_majority_bi_coteries_clustered_member_quorum(10)
+print(create_domination_majority_bi_coteries_clustered_member_quorum(10))
