@@ -1,4 +1,4 @@
-# clustered_head_quorum:從grid矩陣中取 one column + torus 尾巴
+# clustered_head_quorum: 從grid矩陣中取 one column + torus 尾巴
 # clustered_member_quorum: 從grid矩陣中每一個column取一個數字
 
 import numpy as np
