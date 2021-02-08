@@ -66,8 +66,8 @@ crt_c_arbiter_quorum_system = sorted(crt_c_arbiter_quorum_system, reverse=True)
 
 # add uniform_k_arbiter
 average_intersection_list = list()
-start = 135
-end = 210
+start = 191
+end = 200
 
 for i in range(start, end):
     print(i, ":")
