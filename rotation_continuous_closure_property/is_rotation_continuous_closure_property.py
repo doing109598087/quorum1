@@ -38,25 +38,13 @@ def get_all_quorum_continuous_intersection(quorum_system, N):
 
 def is_rotation_continuous_closure_property(quorum_system, N):
     all_product_of_all_rotation_of_all_quorum_list = create_all_product_of_all_rotation_of_all_quorom(quorum_system, N)
-    total = len(all_product_of_all_rotation_of_all_quorum_list)
+    all_rotation_count = len(all_product_of_all_rotation_of_all_quorum_list)
     intersection_count = 0
-    len_of_quorum = len(quorum_system)
-    all_average_list = list()
-    for i in range(pow(N, len_of_quorum)):
-        print(all_product_of_all_rotation_of_all_quorum_list[i], end='')
-        is_intersection = get_all_quorum_continuous_intersection(all_product_of_all_rotation_of_all_quorum_list[i], N)[
-            0]
-        intersection = get_all_quorum_continuous_intersection(all_product_of_all_rotation_of_all_quorum_list[i], N)[1]
-        print(intersection, end='')
-        one_rotation_average_intersection = compute_one_rotation_average_intersection(intersection)
-        all_average_list.append(one_rotation_average_intersection)
-        print(one_rotation_average_intersection)
+    for i in range(all_rotation_count):
+        is_intersection = get_all_quorum_continuous_intersection(all_product_of_all_rotation_of_all_quorum_list[i], N)[0]
         if is_intersection:
             intersection_count += 1
-    print('total 組合:', total)
-    print('average_intersection: ', np.average(all_average_list))
-    print('average_intersection_count', intersection_count / total)  # 有交集的時間飄移組合 / 所有時間飄移組合
-    if intersection_count == pow(N, len_of_quorum):
+    if intersection_count == all_rotation_count:
         return True
     return False
 

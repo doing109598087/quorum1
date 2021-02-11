@@ -15,27 +15,15 @@ def get_all_quorum_continuous_intersection(quorum_system):
 
 def is_rotation_m_closure_property(quorum_system, N):
     all_product_of_all_rotation_of_all_quorom_list = create_all_product_of_all_rotation_of_all_quorom(quorum_system, N)
-    total = len(all_product_of_all_rotation_of_all_quorom_list)
+    all_rotation_count = len(all_product_of_all_rotation_of_all_quorom_list)
     intersection_count = 0
-    len_of_quorum = len(quorum_system)
-    total_intersection_count = 0
-    for i in range(pow(N, len_of_quorum)):
-        # print(all_product_of_all_rotation_of_all_quorom_list[i], end='')
+    for i in range(all_rotation_count):
         intersection_of_list = get_all_quorum_continuous_intersection(all_product_of_all_rotation_of_all_quorom_list[i])
-        # print(intersection_of_list)
-        # print(len(intersection_of_list))
-        total_intersection_count += len(intersection_of_list)
-        if len(get_all_quorum_continuous_intersection(all_product_of_all_rotation_of_all_quorom_list[i])):
+        if len(intersection_of_list):
             intersection_count += 1
-    average_intersection = total_intersection_count / total
-    print('total 組合:', total)
-    print('intersection_count: ', intersection_count)
-    print('total_intersection: ', total_intersection_count)
-    print('average_intersection', total_intersection_count / total)  # 總交集數 / 所有時間飄移組合
-    print('average_intersection_count', intersection_count / total)  # 有交集的時間飄移組合 / 所有時間飄移組合
-    if intersection_count == pow(N, len_of_quorum):
-        return True, average_intersection
-    return False, average_intersection
+    if intersection_count == all_rotation_count:
+        return True
+    return False
 
 
 if __name__ == '__main__':
