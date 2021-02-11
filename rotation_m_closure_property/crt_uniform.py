@@ -34,7 +34,7 @@ def is_prime(num):
 
 #
 def add_number_to_one_quorum(quorum, N, num):
-    q2 = copy.deepcopy(quorum)
+    q2 = copy.deepcopy(quorum)  # copy
     # 如果此quorum原本就比num大->直接return(不加隨機數)
     if len(quorum) >= num:
         return quorum
