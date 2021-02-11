@@ -1,14 +1,7 @@
 import time
 from rotation_m_closure_property.is_rotation_m_closure_property import is_rotation_m_closure_property
 import numpy as np
-
-
-# from same_function import create_one_crt_quorum
-
-
-# crt
-def create_one_crt_quorum(p, N):
-    return [p * k % N for k in range(0, int(N / p - 1 + 1))]
+from same_function import create_one_crt_quorum
 
 
 def create_all_crt_quorum(p_list, N):

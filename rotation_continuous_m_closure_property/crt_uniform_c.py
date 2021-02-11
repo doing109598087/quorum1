@@ -6,11 +6,7 @@ import copy
 import matplotlib.pyplot as plt
 import pandas as pd
 from numba import njit, jit  # for 加速運算
-
-
-@njit  # for 加速
-def create_one_crt_quorum(p, N):
-    return [i for i in range(N) if i % p == 0]
+from same_function import create_one_crt_quorum
 
 
 def create_crt_c_arbiter_quorum_system(list_of_p):

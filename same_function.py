@@ -36,7 +36,7 @@ def compute_one_rotation_average_intersection(all_two_quorum_intersection):
 
 # crt
 def create_one_crt_quorum(p, N):
-    return [i for i in range(N) if i % p == 0]
+    return [p * k % N for k in range(0, int(N / p - 1 + 1))]
 
 
 
