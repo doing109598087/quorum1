@@ -34,7 +34,7 @@ def is_prime(num):
 
 #
 def add_number_to_one_quorum(quorum, N, num):
-    q2 = copy.deepcopy(quorum)  # copy
+    q2 = copy.copy(quorum)
     # 如果此quorum原本就比num大->直接return(不加隨機數)
     if len(quorum) >= num:
         return quorum
@@ -67,26 +67,31 @@ start_time = time.time()
 crt_quorum_system = create_all_crt_quorum(pm_list, N)
 print(crt_quorum_system)
 crt_uniform_quorum_system = add_number_to_all_quorum(crt_quorum_system, N, 7)
+print(crt_uniform_quorum_system)
+crt_uniform_quorum_system = add_number_to_all_quorum(crt_quorum_system, N, 8)
+print(crt_uniform_quorum_system)
+crt_uniform_quorum_system = add_number_to_all_quorum(crt_quorum_system, N, 9)
+print(crt_uniform_quorum_system)
 
-# add uniform_k_arbiter
-average_intersection_list = list()
-for i in range(N + 1):
-    print(i, ":")
-    crt_uniform_quorum_system = add_number_to_all_quorum(crt_quorum_system, N, i)
-    print(crt_uniform_quorum_system)
-    is_rotation_m, average_intersection = is_rotation_m_closure_property(crt_uniform_quorum_system, N)
-    average_intersection_list.append(average_intersection)
-
-# draw
-print(average_intersection_list)
-plt.plot([x for x in range(N + 1)], average_intersection_list)
-plt.xlabel('quorum size')
-plt.ylabel('average_intersection')
-plt.show()
-
-# 表格
-df = pd.DataFrame(average_intersection_list, [x for x in range(N + 1)])
-print(df)
-
-end_time = time.time()
-print("--- %s seconds ---" % (end_time - start_time))
+# # add uniform_k_arbiter
+# average_intersection_list = list()
+# for i in range(N + 1):
+#     print(i, ":")
+#     crt_uniform_quorum_system = add_number_to_all_quorum(crt_quorum_system, N, i)
+#     print(crt_uniform_quorum_system)
+#     is_rotation_m, average_intersection = is_rotation_m_closure_property(crt_uniform_quorum_system, N)
+#     average_intersection_list.append(average_intersection)
+#
+# # draw
+# print(average_intersection_list)
+# plt.plot([x for x in range(N + 1)], average_intersection_list)
+# plt.xlabel('quorum size')
+# plt.ylabel('average_intersection')
+# plt.show()
+#
+# # 表格
+# df = pd.DataFrame(average_intersection_list, [x for x in range(N + 1)])
+# print(df)
+#
+# end_time = time.time()
+# print("--- %s seconds ---" % (end_time - start_time))

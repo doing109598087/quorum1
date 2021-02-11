@@ -23,7 +23,7 @@ def create_crt_c_arbiter_quorum_system(list_of_p):
 
 
 def add_number_to_one_quorum(quorum, N, num):
-    q2 = copy.deepcopy(quorum)
+    q2 = copy.copy(quorum)
     # 如果此quorum原本就比num大->直接return(不加隨機數)
     if len(quorum) >= num:
         return quorum
