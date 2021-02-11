@@ -11,26 +11,30 @@ def create_uniform_k_arbiter_quorum_system(N, quorum_size):
 
 def test_times(N, quorum_size, test_time):
     true_count = 0
+    average_long_list = list()
+    average_short_list = list()
     for i in range(test_time):
         quorum1 = create_uniform_k_arbiter_quorum_system(N, quorum_size)
         quorum2 = create_uniform_k_arbiter_quorum_system(N, quorum_size)
-        quorum3 = create_uniform_k_arbiter_quorum_system(N, quorum_size)
+        # quorum3 = create_uniform_k_arbiter_quorum_system(N, quorum_size)
         quorum1.sort()
         quorum2.sort()
-        quorum3.sort()
+        # quorum3.sort()
         # quorum4 = create_uniform_k_arbiter_quorum_system(N, quorum_size)
         qm1 = set(quorum1).intersection(quorum2)
         # qm2 = set(quorum1).intersection(quorum4)
         quorum_system = list()
-        # quorum_system.append(quorum1)
-        # quorum_system.append(quorum2)
-        quorum_system.append(quorum3)
+        quorum_system.append(quorum1)
+        quorum_system.append(quorum2)
+        # quorum_system.append(quorum3)
         # quorum_system.append(quorum4)
         quorum_system.append(qm1)
         # quorum_system.append(qm2)
-        # print(quorum_system)
+        print(quorum_system)
+        print(len(quorum_system[0]), len(quorum_system[1]), len(quorum_system[2]))
+        is_intersection = is_rotation_closure_property(quorum_system, N)
 
-        if is_rotation_closure_property(quorum_system, N) == True:
+        if is_intersection == True:
             true_count += 1
         else:
             break
@@ -39,12 +43,12 @@ def test_times(N, quorum_size, test_time):
 
 
 start_time = time.time()
-test_time = 1000
+test_time = 1
 N = 25
 k = 2
 quorum_size = int(math.floor(k * N / (k + 1)) + 1)
 true_count = test_times(N, quorum_size, test_time)
-print(true_count)
+# print(true_count)
 
 end_time = time.time()
 print('time: ', end_time - start_time)

@@ -38,7 +38,17 @@ def create_one_grid_torus_clustered_member_quorum(N):
 
 N = 25
 grid_torus_clustered_member_quorum = create_one_grid_torus_clustered_member_quorum(N)
-grid_torus_clustered_head_quorum = create_one_grid_torus_clustered_head_quorum(N, 1)
+grid_torus_clustered_head_quorum1 = create_one_grid_torus_clustered_head_quorum(N, 1)
+grid_torus_clustered_head_quorum1 = list(grid_torus_clustered_head_quorum1)
+grid_torus_clustered_head_quorum1.sort()
+grid_torus_clustered_head_quorum2 = create_one_grid_torus_clustered_head_quorum(N, 0)
+grid_torus_clustered_head_quorum2 = list(grid_torus_clustered_head_quorum2)
+grid_torus_clustered_head_quorum2.sort()
 
-torus_bi_coteries_quorum_system = [grid_torus_clustered_member_quorum, grid_torus_clustered_head_quorum]
+torus_bi_coteries_quorum_system = [grid_torus_clustered_head_quorum1, grid_torus_clustered_head_quorum2,
+                                   grid_torus_clustered_member_quorum]
+# print(len(torus_bi_coteries_quorum_system[0]), len(torus_bi_coteries_quorum_system[1]),
+#       len(torus_bi_coteries_quorum_system[2]))
+
+print(torus_bi_coteries_quorum_system)
 print(is_rotation_closure_property(torus_bi_coteries_quorum_system, N))

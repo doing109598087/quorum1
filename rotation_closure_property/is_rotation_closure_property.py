@@ -25,23 +25,37 @@ def is_and_get_quorum_system_intersection(quorum_system):
 
 def is_rotation_closure_property(quorum_system, N):
     all_product_of_all_rotation_of_all_quorum_list = create_all_product_of_all_rotation_of_all_quorom(quorum_system, N)
-    total = len(all_product_of_all_rotation_of_all_quorum_list)
+    # total = len(all_product_of_all_rotation_of_all_quorum_list)
     intersection_count = 0
     len_of_quorum = len(quorum_system)
-    all_average_list = list()
+    # all_average_list = list()
+    # len_of_two_quorum_intersection = list()
+    # two_quorum_intersection1 = list()
+    # two_quorum_intersection2 = list()
+    # two_quorum_intersection3 = list()
+
     for i in range(pow(N, len_of_quorum)):
         # print(all_product_of_all_rotation_of_all_quorum_list[i], end='')
-        is_intersection = is_and_get_quorum_system_intersection(all_product_of_all_rotation_of_all_quorum_list[i])[0]
-        intersection = is_and_get_quorum_system_intersection(all_product_of_all_rotation_of_all_quorum_list[i])[1]
+        is_intersection, intersection = is_and_get_quorum_system_intersection(
+            all_product_of_all_rotation_of_all_quorum_list[i])
+        # two_quorum_intersection1.append(len(intersection[0]))
+        # two_quorum_intersection2.append(len(intersection[1]))
+        # two_quorum_intersection3.append(len(intersection[2]))
+        # intersection = is_and_get_quorum_system_intersection(all_product_of_all_rotation_of_all_quorum_list[i])[1]
         # print(intersection, end='')
-        one_rotation_average_intersection = compute_one_rotation_average_intersection(intersection)
-        all_average_list.append(one_rotation_average_intersection)
+        # one_rotation_average_intersection = compute_one_rotation_average_intersection(intersection)
+        # all_average_list.append(one_rotation_average_intersection)
         # print(one_rotation_average_intersection)
         if is_intersection:
             intersection_count += 1
     # print('total 組合:', total)
     # print('average_intersection: ', np.average(all_average_list))
     # print('average_intersection_count', intersection_count / total)  # 有交集的時間飄移組合 / 所有時間飄移組合
+    # print(two_quorum_intersection1)
+    # print(len(two_quorum_intersection1))
+    # print(np.average(two_quorum_intersection1))
+    # print(np.average(two_quorum_intersection2))
+    # print(np.average(two_quorum_intersection3))
     if intersection_count == pow(N, len_of_quorum):
         return True
     return False
