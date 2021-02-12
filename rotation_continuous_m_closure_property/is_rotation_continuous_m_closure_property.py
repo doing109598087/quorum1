@@ -46,7 +46,8 @@ def is_rotation_continuous_m_closure_property(quorum_system, N):
     all_rotation_count = len(all_product_of_all_rotation_of_all_quorum_list)
     intersection_count = 0
     for i in range(all_rotation_count):
-        intersection_of_list = get_all_quorum_continuous_intersection(all_product_of_all_rotation_of_all_quorum_list[i], N)
+        intersection_of_list = get_all_quorum_continuous_intersection(all_product_of_all_rotation_of_all_quorum_list[i],
+                                                                      N)
         if len(intersection_of_list):
             intersection_count += 1
     if intersection_count == all_rotation_count:

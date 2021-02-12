@@ -3,6 +3,9 @@ from same_function import create_all_product_of_all_rotation_of_all_quorom, \
 from numba import jit
 import numpy as np
 from itertools import combinations
+import warnings
+
+warnings.filterwarnings('ignore')
 
 
 @jit(nopython=True, parallel=True)  # for 加速

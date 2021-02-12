@@ -1,4 +1,7 @@
 from same_function import create_all_product_of_all_rotation_of_all_quorom
+import warnings
+
+warnings.filterwarnings('ignore')
 
 
 def get_two_quorum_intersection(quorum1, quorum2):

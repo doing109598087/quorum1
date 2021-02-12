@@ -27,24 +27,25 @@ def is_prime(num):
             return False
     return True
 
-# p1 = 5
-# p2 = 4
-# p3 = 3
-# # 4, 5, 9 ok
-# # 2, 3, 5 ok
-# # 3, 4, 5 ok
-#
-# # p4 = 7
-# N = p1 * p2 * p3
-# pm_list = [p1, p2, p3]
-#
-# start_time = time.time()
-#
-# crt_qrorum_system = create_all_crt_quorum(pm_list, N)
-# print(crt_qrorum_system)
-# is_rotation_m, average_intersection = is_rotation_m_closure_property(crt_qrorum_system, N)
-# print(is_rotation_m, ', average_intersection: ', average_intersection)
-#
-# end_time = time.time()
-#
-# print("--- %s seconds ---" % (end_time - start_time))
+
+p1 = 5
+p2 = 3
+p3 = 2
+# 4, 5, 9 ok
+# 2, 3, 5 ok
+# 3, 4, 5 ok
+
+# p4 = 7
+N = p1 * p2 * p3
+pm_list = [p1, p2, p3]
+
+start_time = time.time()
+
+crt_qrorum_system = create_all_crt_quorum(pm_list, N)
+print(crt_qrorum_system)
+is_rotation_m = is_rotation_m_closure_property(crt_qrorum_system, N)
+print(is_rotation_m)
+
+end_time = time.time()
+
+print("--- %s seconds ---" % (end_time - start_time))
