@@ -1,5 +1,5 @@
 from same_function import create_all_product_of_all_rotation_of_all_quorom, \
-    compute_one_rotation_average_intersection
+    compute_one_rotation_average_intersection, compute_all_ratation_average_intersection
 from itertools import combinations
 import numpy as np
 import warnings
@@ -30,10 +30,25 @@ def is_rotation_closure_property(quorum_system, N):
     all_product_of_all_rotation_of_all_quorum_list = create_all_product_of_all_rotation_of_all_quorom(quorum_system, N)
     all_rotation_count = len(all_product_of_all_rotation_of_all_quorum_list)
     intersection_count = 0
+
+    all_ratation_average_intersection = list()
+
     for i in range(all_rotation_count):
-        is_intersection, intersection = is_and_get_quorum_system_intersection(all_product_of_all_rotation_of_all_quorum_list[i])
+        # print all rotation quorum
+        print(all_product_of_all_rotation_of_all_quorum_list[i])
+        is_intersection, intersection = is_and_get_quorum_system_intersection(
+            all_product_of_all_rotation_of_all_quorum_list[i])
+
+        # for average_intersection_count
+        all_ratation_average_intersection.append(compute_one_rotation_average_intersection(intersection))
+        print(intersection, compute_one_rotation_average_intersection(intersection))
+
         if is_intersection:
             intersection_count += 1
+
+    # for average_intersection_count
+    print(compute_all_ratation_average_intersection(all_ratation_average_intersection))
+
     if intersection_count == all_rotation_count:
         return True
     return False

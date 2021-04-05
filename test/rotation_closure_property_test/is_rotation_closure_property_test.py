@@ -19,4 +19,7 @@ class Test_intersection(unittest.TestCase):
         self.assertEqual(compute_one_rotation_average_intersection([{0, 1}, {0}]), 1.5)
         self.assertEqual(compute_one_rotation_average_intersection([{0, 1}, {0}, {0, 1, 2}]), 3)
 
+    def test_get_average_intersection_count(self):
+        self.assertEqual()
+
 

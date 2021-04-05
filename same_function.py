@@ -27,16 +27,19 @@ def sort_quorum_system_by_len(quorum_system):
     return [x for _, x in sorted(zip(len_list, quorum_system))]
 
 
-def compute_one_rotation_average_intersection(all_two_quorum_intersection):
+# for non m
+def compute_one_rotation_average_intersection(one_rotation_intersection):
     count = 0
-    for two_quorum_intersection in all_two_quorum_intersection:
+    for two_quorum_intersection in one_rotation_intersection:
         count += len(two_quorum_intersection)
-    return count / len(all_two_quorum_intersection)
+    return count / len(one_rotation_intersection)
+
+
+# for non m
+def compute_all_ratation_average_intersection(all_ratation_average_intersection):
+    return np.average(all_ratation_average_intersection)
 
 
 # crt
 def create_one_crt_quorum(p, N):
     return [p * k % N for k in range(0, int(N / p - 1 + 1))]
-
-
-
