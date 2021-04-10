@@ -1,34 +1,44 @@
 import numpy as np
 from rotation_closure_property.is_rotation_closure_property import is_rotation_closure_property
-
+import pandas as pd
 
 # 改N可以改grid方陣
 def create_grid_quorum(N, row, column):
     matrix_np = (np.arange(N)).reshape(int(np.sqrt(N)), int(np.sqrt(N)))  # 建立二維矩陣
+    # print(matrix_np)
     return list(set(list(matrix_np[row, :]) + list(matrix_np[:, column])))
 
 
-print(create_grid_quorum(25, 0, 0))
-
 # 驗證all grid quorum
-# N = 25
-# matrix_np = (np.arange(N)).reshape(int(np.sqrt(N)), int(np.sqrt(N)))  # 建立二維矩陣
-# print(matrix_np)
-# grid_matrix_total = list()
+N_list = list()
+save_power_list = list()
+average_intersection_list = list()
+save_power_multiply_average_intersection_list = list()
+for sqrt_N in range(1, 11):
+    N = pow(sqrt_N, 2)
+    grid_quorum1 = create_grid_quorum(N, 0, 0)
+    grid_quorum2 = create_grid_quorum(N, sqrt_N - 1, sqrt_N - 1)
+    grid_quorum_system = list()
+    grid_quorum_system.append(grid_quorum1)
+    grid_quorum_system.append(grid_quorum2)
+    is_rotation, average_intersection = is_rotation_closure_property(grid_quorum_system, N)
 
-# # 建立所有grid quorum(一行一列 = 1grid_quorum)
-# for i in range(int(np.sqrt(N))):
-#     for j in range(int(np.sqrt(N))):
-#         one_c_r_list = list(set(matrix_np[:, i].tolist() + matrix_np[j, :].tolist()))  # set: 移除重複
-#         # print(one_c_r_list)
-#         grid_matrix_total.append(one_c_r_list)
-# # print('grid_matrix_total: ', grid_matrix_total, len(grid_matrix_total))
-#
-# # 兩grid_quorum做is_rotation_closure
-# for i in range(N):
-#     for j in range(N):
-#         grid_system = list()
-#         grid_system.append(grid_matrix_total[i])
-#         grid_system.append(grid_matrix_total[j])
-#         print(grid_matrix_total[i], grid_matrix_total[j])
-#         print(is_rotation_closure_property(grid_system, N))
+    # for file
+    N_list.append(N)
+    save_power_list.append((N - len(grid_quorum1)) / N)
+    average_intersection_list.append(average_intersection / N)
+    save_power_multiply_average_intersection_list.append(((N - len(grid_quorum1)) / N) * (average_intersection / N))
+
+print(N_list)
+print(save_power_list)
+print(average_intersection_list)
+print(save_power_multiply_average_intersection_list)
+
+df = pd.DataFrame({
+    'N': N_list,
+    'save_power': save_power_list,
+    'average_intersection': average_intersection_list,
+    'save_power_*_average_intersection': save_power_multiply_average_intersection_list,
+})
+df.to_csv('grid_save_power_average_intersection.csv', index=False)
+

@@ -35,32 +35,33 @@ def is_rotation_closure_property(quorum_system, N):
 
     for i in range(all_rotation_count):
         # print all rotation quorum
-        print(all_product_of_all_rotation_of_all_quorum_list[i])
+        # print(all_product_of_all_rotation_of_all_quorum_list[i])
         is_intersection, intersection = is_and_get_quorum_system_intersection(
             all_product_of_all_rotation_of_all_quorum_list[i])
 
         # for average_intersection_count
         all_ratation_average_intersection.append(compute_one_rotation_average_intersection(intersection))
-        print(intersection, compute_one_rotation_average_intersection(intersection))
+        # print(intersection, compute_one_rotation_average_intersection(intersection))
 
         if is_intersection:
             intersection_count += 1
 
     # for average_intersection_count
-    print(compute_all_ratation_average_intersection(all_ratation_average_intersection))
+    average_intersection = compute_all_ratation_average_intersection(all_ratation_average_intersection)
+    # print(average_intersection)
 
     if intersection_count == all_rotation_count:
-        return True
+        return True, average_intersection
     return False
 
 
 if __name__ == '__main__':
-    # N = 8
-    # C1 = [[0, 1, 2, 4], [3, 4, 5, 7], [0, 2, 6, 7]]
-    # print(is_rotation_closure_property(C1, N))
-    # N = 16
-    # C_grid = [[1, 4, 5, 6, 7, 9, 13], [14, 15, 3, 7, 11, 12, 13]]
-    # print(is_rotation_closure_property(C_grid, N))
+    # N = 85, 7], [0, 2, 6, 7]]
+    #     # print(is_rotation_closure_property(C1, N))
+    #     # N = 16
+    #     # C_grid = [[1, 4, 5, 6, 7, 9, 13], [14, 15, 3, 7, 11, 12, 13]]
+    #     # print(is_rotation_closure_property(C_grid, N))
+    # C1 = [[0, 1, 2, 4], [3, 4,
     N = 10
     # C1 = [[0, 3, 6], [0, 1, 2, 4, 7]]
     # C1 = [[6, 7, 8], [0, 3, 6, 4, 7]]
