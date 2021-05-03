@@ -29,16 +29,13 @@ N = 30
 domination_majority_quorum_system = list()
 domination_majority_head_quorum1 = create_domination_majority_bi_coteries_clustered_head_quorum(N)
 domination_majority_head_quorum1.sort()
-domination_majority_head_quorum2 = create_domination_majority_bi_coteries_clustered_head_quorum(N)
-domination_majority_head_quorum2.sort()
 domination_majority_quorum_system.append(domination_majority_head_quorum1)
-domination_majority_quorum_system.append(domination_majority_head_quorum2)
 
 domination_majority_member_quorum = create_domination_majority_bi_coteries_clustered_member_quorum(N)
 domination_majority_member_quorum.sort()
 domination_majority_quorum_system.append(domination_majority_member_quorum)
-
+#
 print(domination_majority_quorum_system)
-print(len(domination_majority_quorum_system[0]), len(domination_majority_quorum_system[1]),
-      len(domination_majority_quorum_system[2]))
+# print(len(domination_majority_quorum_system[0]), len(domination_majority_quorum_system[1]),
+#       len(domination_majority_quorum_system[2]))
 print(is_rotation_closure_property(domination_majority_quorum_system, N))

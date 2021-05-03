@@ -2,7 +2,7 @@ from same_function import create_all_product_of_all_rotation_of_all_quorom, sort
 import copy
 import time
 import numpy as np
-from numba import njit, jit  # for 加速運算
+from numba import jit  # for 加速運算
 import warnings
 
 warnings.filterwarnings('ignore')

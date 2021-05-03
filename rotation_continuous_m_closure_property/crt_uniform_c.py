@@ -32,18 +32,6 @@ def add_number_to_one_quorum(quorum, N, num):
     return q2
 
 
-# 下面的版本可使每次從上一輪的況狀再加入隨機數
-# def add_number_to_one_quorum(quorum, N, total_time):
-#     if len(quorum) >= total_time:
-#         return quorum
-#     while len(quorum) < total_time:
-#         a = random.randint(0, N)
-#         if a not in quorum:
-#             quorum.append(a)
-#     quorum.sort()
-#     return quorum
-
-
 def add_number_to_all_quorum(quorum_system, N, final_k):
     return [add_number_to_one_quorum(quorum, N, final_k) for quorum in quorum_system]
 

@@ -2,6 +2,7 @@ import numpy as np
 from rotation_closure_property.is_rotation_closure_property import is_rotation_closure_property
 import pandas as pd
 
+
 # 改N可以改grid方陣
 def create_grid_quorum(N, row, column):
     matrix_np = (np.arange(N)).reshape(int(np.sqrt(N)), int(np.sqrt(N)))  # 建立二維矩陣
@@ -41,4 +42,3 @@ df = pd.DataFrame({
     'save_power_*_average_intersection': save_power_multiply_average_intersection_list,
 })
 df.to_csv('grid_save_power_average_intersection.csv', index=False)
-
