@@ -5,11 +5,8 @@ from rotation_closure_property.is_rotation_closure_property import is_rotation_c
 
 def create_one_torus_quorum(n, t, w):
     nd_array = (np.arange(n)).reshape(t, w)
-    print(nd_array)
-    result = list()
-    for i in range(w):
-        result.append(choice(nd_array[:, i]))
-    return result
+    # print(nd_array)
+    return [choice(nd_array[:, i]) for i in range(w)]
 
 
 N = 30
