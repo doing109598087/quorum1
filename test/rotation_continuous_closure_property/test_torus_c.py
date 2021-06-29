@@ -1,5 +1,5 @@
 import unittest
-from rotation_continuous_closure_property.torus_c import create_one_continuous_torus_quorum
+from rotation_continuous_closure_property.c_torus import create_one_continuous_torus_quorum
 
 
 

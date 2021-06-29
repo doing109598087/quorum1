@@ -1,3 +1,5 @@
+# c_torus => 2個連續column + 連續(w/2 + 1)個尾巴
+
 import numpy as np
 from random import choice
 from rotation_continuous_closure_property.is_rotation_continuous_closure_property import \

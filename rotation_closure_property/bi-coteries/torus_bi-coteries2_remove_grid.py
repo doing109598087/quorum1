@@ -9,8 +9,8 @@ from rotation_closure_property.is_rotation_closure_property import is_rotation_c
 
 
 # create torus 矩陣
-def create_one_grid_torus_clustered_head_quorum(N, column):
-    t = w = int(math.sqrt(N))
+def create_one_grid_torus_clustered_head_quorum(N, t, w, column):
+    # t = w = int(math.sqrt(N))
     tail_number = int(floor(w / 2))  # 元素個數
     nd_array = np.arange(N).reshape(t, w)
     print(nd_array)
@@ -27,8 +27,8 @@ def create_one_grid_torus_clustered_head_quorum(N, column):
     return nd_0
 
 
-def create_one_grid_torus_clustered_member_quorum(N):
-    matrix_np = (np.arange(N)).reshape(int(np.sqrt(N)), int(np.sqrt(N)))  # 建立二維矩陣
+def create_one_grid_torus_clustered_member_quorum(t, w):
+    matrix_np = (np.arange(N)).reshape(int(np.sqrt(t)), int(np.sqrt(w)))  # 建立二維矩陣
     # print(matrix_np)
     return [choice(list(matrix_np[:, i])) for i in range(matrix_np.shape[1])]
 
@@ -37,19 +37,18 @@ def create_one_grid_torus_clustered_member_quorum(N):
 # print(create_one_grid_torus_clustered_head_quorum(9, 1))
 # print(create_one_grid_torus_clustered_member_quorum(25))
 
-N = 25
-grid_torus_clustered_member_quorum = create_one_grid_torus_clustered_member_quorum(N)
-grid_torus_clustered_head_quorum1 = create_one_grid_torus_clustered_head_quorum(N, 1)
+N = 36
+torus_bi_coteries_quorum_system = list()
+grid_torus_clustered_head_quorum1 = create_one_grid_torus_clustered_head_quorum(N, 12, 3, 1)
 grid_torus_clustered_head_quorum1 = list(grid_torus_clustered_head_quorum1)
 # grid_torus_clustered_head_quorum1.sort()
-grid_torus_clustered_head_quorum2 = create_one_grid_torus_clustered_head_quorum(N, 0)
+grid_torus_clustered_head_quorum2 = create_one_grid_torus_clustered_head_quorum(N, 12, 3, 0)
 grid_torus_clustered_head_quorum2 = list(grid_torus_clustered_head_quorum2)
 # grid_torus_clustered_head_quorum2.sort()
-
-torus_bi_coteries_quorum_system = [grid_torus_clustered_head_quorum1, grid_torus_clustered_head_quorum2,
-                                   grid_torus_clustered_member_quorum]
-# print(len(torus_bi_coteries_quorum_system[0]), len(torus_bi_coteries_quorum_system[1]),
-#       len(torus_bi_coteries_quorum_system[2]))
+# grid_torus_clustered_member_quorum = create_one_grid_torus_clustered_member_quorum(3, 12)
+torus_bi_coteries_quorum_system.append(grid_torus_clustered_head_quorum1)
+torus_bi_coteries_quorum_system.append(grid_torus_clustered_head_quorum2)
+# torus_bi_coteries_quorum_system.append(grid_torus_clustered_member_quorum)
 
 print(torus_bi_coteries_quorum_system)
-print(is_rotation_closure_property(torus_bi_coteries_quorum_system, N))
+# print(is_rotation_closure_property(torus_bi_coteries_quorum_system, N))

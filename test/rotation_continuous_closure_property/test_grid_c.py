@@ -1,5 +1,5 @@
 import unittest
-from rotation_continuous_closure_property.grid_c import create_one_continuous_grid_quorum
+from rotation_continuous_closure_property.c_grid import create_one_continuous_grid_quorum
 
 
 class Test_create_continuous_grid_quorum(unittest.TestCase):
