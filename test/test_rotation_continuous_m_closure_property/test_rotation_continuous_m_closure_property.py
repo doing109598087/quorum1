@@ -27,8 +27,8 @@ class Test_continuous_intersection(unittest.TestCase):
 
     # todo: 6/29
     def test_sort_quorum_system_by_len(self):
-        self.assertEqual(sort_quorum_system_by_len([[0, 1, 2], [0, 1]]), [[0, 1], [0, 1, 2]])
-        self.assertEqual(sort_quorum_system_by_len([[0, 1, 2], [0, 1], [0]]), [[0], [0, 1], [0, 1, 2]])
+        self.assertEqual([[0, 1], [0, 1, 2]], sort_quorum_system_by_len([[0, 1, 2], [0, 1]]))
+        self.assertEqual([[0], [0, 1], [0, 1, 2]], sort_quorum_system_by_len([[0, 1, 2], [0, 1], [0]]))
 
     def test_get_intersection_of_all_quorum(self):
         self.assertEqual([0, 1, 2, 3], get_intersection_of_all_quorum([[0, 1, 2, 3, 4], [0, 1, 2, 3]]))
